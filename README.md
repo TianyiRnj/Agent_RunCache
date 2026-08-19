@@ -49,6 +49,83 @@ npm install @hyperbrowser/agent
 yarn add @hyperbrowser/agent
 ```
 
+### Local Source Development
+
+If you cloned this repository to develop HyperAgent itself, this repository is
+already the `@hyperbrowser/agent` package. Do not install the published package
+with `npm`, `pnpm`, or `yarn add`, because doing so would add a second copy of
+HyperAgent instead of using your local source.
+
+Install this repository's third-party dependencies, build the local package,
+and run the CLI from the repository root:
+
+```bash
+cd Agent_RunCache
+yarn install --frozen-lockfile
+yarn build
+
+# Create the local environment file once.
+cp .env.example .env
+
+# Open .env and set OPENAI_API_KEY and OPENAI_MODEL. The CLI loads them automatically.
+
+# Run the local HyperAgent source.
+yarn cli -c "Open example.com and return the page title"
+```
+
+The minimum `.env` configuration for the default CLI is:
+
+```dotenv
+OPENAI_MODEL=gpt-4o
+OPENAI_API_KEY=your-api-key
+```
+
+The repository ignores `.env`, so local secrets are not committed. Keep
+`.env.example` as the shareable list of supported variables. After configuring
+`.env` once, subsequent commands do not require `export OPENAI_API_KEY=...`.
+`OPENAI_MODEL` controls the model used by the CLI and by `new HyperAgent()` when
+no explicit `llm` configuration is supplied; it defaults to `gpt-4o` when unset.
+
+Local examples also resolve `@hyperbrowser/agent` to `src/index.ts` through the
+repository's TypeScript path configuration:
+
+```bash
+yarn example examples/simple/add-to-amazon-cart.ts
+
+# Test a login flow using SauceDemo's public demo credentials from .env.
+yarn example examples/simple/login-to-saucedemo.ts
+```
+
+#### Run in an isolated Node environment
+
+HyperAgent is a Node.js/TypeScript project, so a Python `venv` does not isolate
+its runtime or dependencies. Use a Node version manager such as `nvm`; project
+dependencies will remain isolated in this repository's `node_modules` directory.
+
+```bash
+# Create/select an isolated Node runtime for this shell.
+nvm install 22
+nvm use 22
+
+# This repository uses a Yarn v1 lockfile.
+corepack enable
+corepack prepare yarn@1.22.22 --activate
+
+cd Agent_RunCache
+yarn install --frozen-lockfile
+yarn build
+
+# Reuse the .env file created during local setup.
+yarn cli -c "Open example.com and return the page title"
+```
+
+If all dependency archives are already present in the local Yarn cache, the
+dependency installation can be performed without network access:
+
+```bash
+yarn install --offline --frozen-lockfile
+```
+
 ### CLI
 
 ```bash

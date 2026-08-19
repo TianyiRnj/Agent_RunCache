@@ -49,7 +49,7 @@ program
 
     console.log(chalk.blue("HyperAgent CLI"));
     currentSpinner.info(
-      `Pause using ${chalk.bold("ctrl + p")} and resume using ${chalk.bold("ctrl + r")}\n`
+      `Pause using ${chalk.bold("ctrl + p")}, resume using ${chalk.bold("ctrl + r")}, and exit using ${chalk.bold("ctrl + c")}\n`,
     );
     try {
       // Check for API key if using Hyperbrowser

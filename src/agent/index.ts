@@ -108,7 +108,7 @@ export class HyperAgent<T extends BrowserProviders = "Local"> {
       if (process.env.OPENAI_API_KEY) {
         this.llm = createLLMClient({
           provider: "openai",
-          model: "gpt-4o",
+          model: process.env.OPENAI_MODEL?.trim() || "gpt-4o",
           temperature: 0,
         });
       } else {

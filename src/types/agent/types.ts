@@ -159,6 +159,7 @@ export interface AgentDeps {
   variables: Array<{ key: string; value: string; description: string }>;
   cdpActionsEnabled?: boolean;
 }
+
 export interface HyperVariable {
   key: string;
   value: string;
