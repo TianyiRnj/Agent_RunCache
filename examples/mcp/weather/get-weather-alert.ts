@@ -1,7 +1,7 @@
 /**
  * # Weather MCP Server Example
  *
- * This example demonstrates how to use HyperAgent with a MCP (Model Context Protocol) server
+ * This example demonstrates how to use Agent Run Cache with a MCP (Model Context Protocol) server
  * to browse the web, extract information, and use that information to query a separate API service.
  *
  * ## What This Example Does
@@ -44,7 +44,7 @@ import dotenv from "dotenv";
 import chalk from "chalk";
 import path from "path";
 // Removed LangChain import - using native SDK configuration
-import HyperAgent from "@hyperbrowser/agent";
+import AgentRunCache from "agent-run-cache";
 
 dotenv.config();
 
@@ -60,10 +60,10 @@ async function run() {
 
   const mcpServerPath = path.join(__dirname, "/servers/weather-server.js");
 
-  console.log(chalk.yellow("Creating Hyperbrowser Agent..."));
+  console.log(chalk.yellow("Creating Agent Run Cache agent..."));
 
   try {
-    const agent = new HyperAgent({
+    const agent = new AgentRunCache({
       llm: {
         provider: "openai",
         model: "gpt-4o",

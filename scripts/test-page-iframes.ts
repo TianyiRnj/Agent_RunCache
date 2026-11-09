@@ -1,10 +1,10 @@
-import { HyperAgent } from "../src/agent";
+import { AgentRunCache } from "agent-run-cache";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 (async () => {
-  const agent = new HyperAgent({
+  const agent = new AgentRunCache({
     debug: true,
     llm: {
       provider: "anthropic",

@@ -165,7 +165,7 @@ export interface A11yDOMConfig {
   mode?: "a11y" | "hybrid" | "visual-debug";
 
   /**
-   * Whether to inject data-hyperagent-id attributes into DOM
+   * Whether to inject element ID data attributes into DOM
    * Required for visual-debug mode
    */
   injectIdentifiers?: boolean;

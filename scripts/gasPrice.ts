@@ -2,7 +2,7 @@
 
 import "dotenv/config";
 import { HyperPage } from "../src/types/agent/types";
-import { HyperAgent } from "../src/agent";
+import { AgentRunCache } from "agent-run-cache";
 
 // Install all dependencies:
 // pnpm add -D playwright tsx typescript @types/node
@@ -14,12 +14,12 @@ import { HyperAgent } from "../src/agent";
 // Generated at 2025-10-27T23:39:52.578Z
 
 async function runWorkflow() {
-  let agent: HyperAgent | null = null;
+  let agent: AgentRunCache | null = null;
 
   try {
-    // Initialize HyperAgent
-    console.log("Initializing HyperAgent...");
-    agent = new HyperAgent({
+    // Initialize Agent Run Cache
+    console.log("Initializing Agent Run Cache...");
+    agent = new AgentRunCache({
       llm: {
         provider: "anthropic",
         model: "claude-sonnet-4-0",
@@ -36,7 +36,7 @@ async function runWorkflow() {
     // Get the page instance
     const page: HyperPage = await agent.newPage();
     if (!page) {
-      throw new Error("Failed to get page instance from HyperAgent");
+      throw new Error("Failed to get page instance from Agent Run Cache");
     }
 
     await page.goto("https://www.google.com/maps");
@@ -104,11 +104,11 @@ async function runWorkflow() {
   } finally {
     // Clean up
     if (agent) {
-      console.log("Closing HyperAgent connection.");
+      console.log("Closing Agent Run Cache connection.");
       try {
         await agent.closeAgent();
       } catch (err) {
-        console.error("Error closing HyperAgent:", err);
+        console.error("Error closing Agent Run Cache:", err);
       }
     }
   }

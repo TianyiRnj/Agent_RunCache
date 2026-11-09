@@ -1,7 +1,7 @@
 /**
  * # Google Sheets MCP Server Example
  *
- * This example demonstrates how to use HyperAgent with the Composio Googlesheets MCP server
+ * This example demonstrates how to use Agent Run Cache with the Composio Googlesheets MCP server
  * to connect to Google Sheets, create a new spreadsheet, and populate it with data scraped from the web.
  *
  * ## What This Example Does
@@ -62,7 +62,7 @@
 import dotenv from "dotenv";
 import chalk from "chalk";
 // Removed LangChain import - using native SDK configuration
-import HyperAgent from "@hyperbrowser/agent";
+import AgentRunCache from "agent-run-cache";
 
 dotenv.config();
 
@@ -82,10 +82,10 @@ async function run(mcpUrl: string) {
   console.log(chalk.yellow("Initializing OpenAI LLM..."));
   // Using native SDK configuration
 
-  console.log(chalk.yellow("Creating HyperAgent..."));
+  console.log(chalk.yellow("Creating Agent Run Cache agent..."));
 
   try {
-    const agent = new HyperAgent({
+    const agent = new AgentRunCache({
       llm: {
       provider: "openai",
       model: "gpt-4o",

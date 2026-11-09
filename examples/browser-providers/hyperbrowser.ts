@@ -1,13 +1,13 @@
 /**
  * # Hyperbrowser Provider Example
  *
- * This example demonstrates how to configure and use HyperAgent with the Hyperbrowser
+ * This example demonstrates how to configure and use Agent Run Cache with the Hyperbrowser
  * provider for web browsing tasks with proxy support.
  *
  * ## What This Example Does
  *
  * The agent performs a simple web search task that:
- * 1. Configures HyperAgent with Hyperbrowser-specific settings
+ * 1. Configures Agent Run Cache with Hyperbrowser-specific settings
  * 2. Enables proxy support for enhanced privacy and reliability
  * 3. Searches for and extracts specific information about a movie release date
  *
@@ -24,12 +24,12 @@
  */
 
 import "dotenv/config";
-import { HyperAgent } from "@hyperbrowser/agent";
+import { AgentRunCache } from "agent-run-cache";
 // Removed LangChain import - using native SDK configuration
 import chalk from "chalk";
 
 async function runEval() {
-  const agent = new HyperAgent({
+  const agent = new AgentRunCache({
     llm: {
       provider: "openai",
       model: "gpt-4o",

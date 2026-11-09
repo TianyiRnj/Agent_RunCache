@@ -1,6 +1,6 @@
 // workflow.ts
 
-import { HyperAgent } from "../src/agent";
+import { AgentRunCache } from "agent-run-cache";
 import { HyperPage } from "../src/types/agent/types";
 
 // Install all dependencies:
@@ -13,12 +13,12 @@ import { HyperPage } from "../src/types/agent/types";
 // Generated at 2025-10-27T23:39:52.578Z
 
 async function runWorkflow() {
-  let agent: HyperAgent | null = null;
+  let agent: AgentRunCache | null = null;
 
   try {
-    // Initialize HyperAgent
-    console.log("Initializing HyperAgent...");
-    agent = new HyperAgent({
+    // Initialize Agent Run Cache
+    console.log("Initializing Agent Run Cache...");
+    agent = new AgentRunCache({
       llm: {
         provider: "openai",
         model: "gpt-4o",
@@ -29,7 +29,7 @@ async function runWorkflow() {
     // Get the page instance
     const page: HyperPage = await agent.newPage();
     if (!page) {
-      throw new Error("Failed to get page instance from HyperAgent");
+      throw new Error("Failed to get page instance from Agent Run Cache");
     }
 
     const variables = {
@@ -86,11 +86,11 @@ async function runWorkflow() {
   } finally {
     // Clean up
     if (agent) {
-      console.log("Closing HyperAgent connection.");
+      console.log("Closing Agent Run Cache connection.");
       try {
         await agent.closeAgent();
       } catch (err) {
-        console.error("Error closing HyperAgent:", err);
+        console.error("Error closing Agent Run Cache:", err);
       }
     }
   }

@@ -1,13 +1,13 @@
 /**
  * # DeepSeek LLM Integration Example
  *
- * This example demonstrates how to configure and use HyperAgent with DeepSeek's
+ * This example demonstrates how to configure and use Agent Run Cache with DeepSeek's
  * language models for web automation tasks.
  *
  * ## What This Example Does
  *
  * The agent performs a web scraping task that:
- * 1. Configures HyperAgent with DeepSeek's model
+ * 1. Configures Agent Run Cache with DeepSeek's model
  * 2. Navigates to Hacker News
  * 3. Searches for and extracts information about "Show HN" posts
  *
@@ -24,7 +24,7 @@
  */
 
 import "dotenv/config";
-import HyperAgent from "@hyperbrowser/agent";
+import AgentRunCache from "agent-run-cache";
 
 import chalk from "chalk";
 
@@ -32,7 +32,7 @@ const TASK =
   "Go to hackernews, and find if there's any SHOW HN post up there. If it is, then tell me the title of the post.";
 
 async function runEval() {
-  const agent = new HyperAgent({
+  const agent = new AgentRunCache({
     llm: {
       provider: "deepseek",
       model: "deepseek-chat",

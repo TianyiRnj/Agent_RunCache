@@ -3,7 +3,7 @@ export class HyperagentError extends Error {
     message: string,
     public statusCode?: number
   ) {
-    super(`[Hyperagent]: ${message}`);
+    super(`[Agent Run Cache]: ${message}`);
     this.name = "HyperagentError";
   }
 }

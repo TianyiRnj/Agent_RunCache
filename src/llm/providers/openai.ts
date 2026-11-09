@@ -10,11 +10,12 @@ import {
 } from "../types";
 import { convertToOpenAIMessages } from "../utils/message-converter";
 import { convertToOpenAIJsonSchema } from "../utils/schema-converter";
-import { getDebugOptions } from "@/debug/options";
+import { getDebugOptions, readDebugEnv } from "@/debug/options";
 
+const STRUCTURED_SCHEMA_DEBUG_VALUE = readDebugEnv("DEBUG_STRUCTURED_SCHEMA");
 const ENV_STRUCTURED_SCHEMA_DEBUG =
-  process.env.HYPERAGENT_DEBUG_STRUCTURED_SCHEMA === "1" ||
-  process.env.HYPERAGENT_DEBUG_STRUCTURED_SCHEMA === "true";
+  STRUCTURED_SCHEMA_DEBUG_VALUE === "1" ||
+  STRUCTURED_SCHEMA_DEBUG_VALUE === "true";
 
 function shouldDebugStructuredSchema(): boolean {
   const opts = getDebugOptions();

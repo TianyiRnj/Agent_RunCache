@@ -27,8 +27,10 @@ const program = new Command();
 let currentSpinner = ora();
 
 program
-  .name("hyperbrowser")
-  .description("CLI for Hyperbrowser - A powerful browser automation tool")
+  .name("agent-run-cache")
+  .description(
+    "CLI for Agent Run Cache - Browser automation with replayable action caches"
+  )
   .version("1.0.2");
 
 program
@@ -47,7 +49,7 @@ program
     const filePath = (options.file as string) || undefined;
     const mcpPath = (options.mcp as string) || undefined;
 
-    console.log(chalk.blue("HyperAgent CLI"));
+    console.log(chalk.blue("Agent Run Cache CLI"));
     currentSpinner.info(
       `Pause using ${chalk.bold("ctrl + p")}, resume using ${chalk.bold("ctrl + r")}, and exit using ${chalk.bold("ctrl + c")}\n`,
     );
@@ -148,7 +150,7 @@ program
           }
           currentSpinner.start(
             chalk.blue(
-              "Hyperagent will pause after completing this operation. Press Ctrl+r again to resume."
+              "Agent Run Cache will pause after completing this operation. Press Ctrl+r again to resume."
             )
           );
           currentSpinner.stopAndPersist({ symbol: "⏸" });
@@ -159,7 +161,7 @@ program
           }
         } else if (key && key.ctrl && key.name == "r") {
           if (task.getStatus() == TaskStatus.PAUSED) {
-            currentSpinner.start(chalk.blue("Hyperagent will resume"));
+            currentSpinner.start(chalk.blue("Agent Run Cache will resume"));
             currentSpinner.stopAndPersist({ symbol: "⏵" });
             currentSpinner = ora();
 
@@ -169,7 +171,7 @@ program
           if (currentSpinner.isSpinning) {
             currentSpinner.stopAndPersist();
           }
-          console.log("\nShutting down HyperAgent");
+          console.log("\nShutting down Agent Run Cache");
           try {
             await agent.closeAgent();
             process.exit(0);
@@ -212,7 +214,7 @@ program
       const onComplete = async (params: TaskOutput) => {
         console.log(
           boxen(params.output || "No Response", {
-            title: chalk.yellow("HyperAgent Response"),
+            title: chalk.yellow("Agent Run Cache Response"),
             titleAlignment: "center",
             float: "center",
             padding: 1,
@@ -229,7 +231,7 @@ program
         });
         if (continueTask) {
           const taskDescription = await inquirer.input({
-            message: "What should HyperAgent do next for you?",
+            message: "What should Agent Run Cache do next for you?",
             required: true,
           });
 
@@ -254,7 +256,7 @@ program
           taskDescription = (await fs.promises.readFile(filePath)).toString();
         } else {
           taskDescription = await inquirer.input({
-            message: "What should HyperAgent do for you today?",
+            message: "What should Agent Run Cache do for you today?",
             required: true,
           });
         }

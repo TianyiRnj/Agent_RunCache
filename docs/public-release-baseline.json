@@ -1,0 +1,3493 @@
+{
+  "audit_date": "2026-11-08",
+  "audit_timezone": "America/New_York",
+  "baseline_commit": "4408ef5",
+  "source_package": "@hyperbrowser/agent",
+  "source_package_version": "1.1.2",
+  "scope": {
+    "tracked_files": 152,
+    "text_files": 150,
+    "binary_files": 2,
+    "initial_worktree_clean": true,
+    "initial_extra_untracked_or_ignored_paths": 0,
+    "excluded": [
+      "git-history",
+      "other-branches",
+      "tags",
+      "remote-actions-logs",
+      "artifacts",
+      "historical-releases",
+      "wiki",
+      "attachments"
+    ],
+    "remote_changes": false,
+    "source_and_lockfile_changes": false
+  },
+  "environment": {
+    "node": "v22.20.0",
+    "yarn": "1.22.22",
+    "browser": "Installed Google Chrome via LocalBrowserProvider"
+  },
+  "checks": [
+    {
+      "command": "yarn install --frozen-lockfile --ignore-scripts --non-interactive --cache-folder <temporary-cache> --network-timeout 15000",
+      "status": "passed",
+      "exit_code": 0
+    },
+    {
+      "command": "yarn build",
+      "status": "passed",
+      "exit_code": 0
+    },
+    {
+      "command": "yarn cli --help",
+      "status": "passed",
+      "exit_code": 0
+    },
+    {
+      "command": "yarn cli --version",
+      "status": "passed",
+      "exit_code": 0,
+      "observed_version": "1.0.2",
+      "package_version": "1.1.2"
+    },
+    {
+      "command": "node dist/cli/index.js --help",
+      "status": "passed",
+      "exit_code": 0
+    },
+    {
+      "command": "bash cli.sh --help",
+      "status": "passed",
+      "exit_code": 0
+    },
+    {
+      "command": "yarn test --runInBand",
+      "status": "failed-existing",
+      "exit_code": 127,
+      "reason": "jest: command not found"
+    },
+    {
+      "command": "yarn lint",
+      "status": "failed-existing",
+      "exit_code": 1,
+      "errors": 21,
+      "warnings": 0,
+      "coverage_note": "Unquoted shell glob omits deep source directories"
+    },
+    {
+      "command": "node_modules/.bin/eslint 'src/**/*.ts' --format json",
+      "status": "failed-existing",
+      "exit_code": 1,
+      "files_checked": 90,
+      "errors": 88,
+      "warnings": 1
+    },
+    {
+      "command": "npm pack --dry-run --ignore-scripts --json",
+      "status": "passed",
+      "exit_code": 0,
+      "entry_count": 184,
+      "non_dist_files": [
+        "LICENSE",
+        "README.md",
+        "cli.sh",
+        "package.json"
+      ],
+      "package_was_published": false
+    }
+  ],
+  "local_smoke": {
+    "status": "passed",
+    "passed_checks": 20,
+    "fixture": "Synthetic in-memory HTML with a form, output and same-origin srcdoc iframe",
+    "llm": "Local deterministic mock; responses validated against runtime Zod schemas",
+    "real_model_or_cloud_requests": false,
+    "harness": "Temporary local-smoke.cjs in the system temporary directory; not part of published source",
+    "harness_sha256": "0e56f5940cf09482da51d4829f2dd19f4b2c06e9e3586952a9409e042ccda1c1",
+    "generated_script_execution_tested": false,
+    "cross_origin_iframe_tested": false,
+    "results": [
+      {
+        "mode": "cdp",
+        "check": "local-provider-launch",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "agent-record-and-cache",
+        "status": "passed",
+        "recordedSteps": 3,
+        "mockLlmCalls": 3
+      },
+      {
+        "mode": "cdp",
+        "check": "json-cache-replay-without-llm",
+        "status": "passed",
+        "replayedSteps": 3
+      },
+      {
+        "mode": "cdp",
+        "check": "generated-script-syntax",
+        "status": "passed",
+        "executionChecked": false
+      },
+      {
+        "mode": "cdp",
+        "check": "missing-xpath-fails-without-llm",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "missing-xpath-falls-back-to-perform",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "single-perform-action",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "structured-extract",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "same-origin-iframe-cached-fill",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "provider-cleanup",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "local-provider-launch",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "agent-record-and-cache",
+        "status": "passed",
+        "recordedSteps": 3,
+        "mockLlmCalls": 3
+      },
+      {
+        "mode": "playwright",
+        "check": "json-cache-replay-without-llm",
+        "status": "passed",
+        "replayedSteps": 3
+      },
+      {
+        "mode": "playwright",
+        "check": "generated-script-syntax",
+        "status": "passed",
+        "executionChecked": false
+      },
+      {
+        "mode": "playwright",
+        "check": "missing-xpath-fails-without-llm",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "missing-xpath-falls-back-to-perform",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "single-perform-action",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "structured-extract",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "same-origin-iframe-cached-fill",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "provider-cleanup",
+        "status": "passed"
+      }
+    ]
+  },
+  "sensitive_scan": {
+    "method": [
+      "known-provider-credential-and-private-key-patterns",
+      "credential-assignment-review",
+      "email-domain-and-context-review",
+      "private-endpoint-and-url-credentials-patterns",
+      "local-path-patterns",
+      "high-entropy-quoted-strings-and-context-review",
+      "tracked-runtime-artifact-path-review"
+    ],
+    "confirmed_hardcoded_provider_keys": 0,
+    "private_endpoint_pattern_matches": 0,
+    "url_credential_pattern_matches": 0,
+    "local_user_path_matches": 0,
+    "email_match_lines": 21,
+    "high_entropy_string_candidates": 1,
+    "high_entropy_context": "Benchmark answer for a Hugging Face dataset name, not classified as a credential",
+    "unresolved_sample_locations": [
+      {
+        "path": "evals/WebVoyager_data.jsonl",
+        "lines": [
+          428,
+          527
+        ]
+      },
+      {
+        "path": "evals/WebVoyager_reference.json",
+        "lines": [
+          2190
+        ]
+      }
+    ],
+    "secrets_copied_to_report": false,
+    "credential_validity_tested": false
+  },
+  "brand_summary": {
+    "hyperagent": {
+      "files": 66,
+      "occurrences": 339
+    },
+    "hyperbrowser": {
+      "files": 33,
+      "occurrences": 131
+    },
+    "hyperpage_or_variable": {
+      "files": 12,
+      "occurrences": 75
+    },
+    "old_package": {
+      "files": 20,
+      "occurrences": 37
+    }
+  },
+  "brand_union_files": 73,
+  "lint_diagnostics": [
+    {
+      "path": "src/agent/actions/complete-with-output-schema.ts",
+      "line": 5,
+      "column": 27,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/actions/index.ts",
+      "line": 5,
+      "column": 10,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'PageBackActionDefinition' is defined but never used."
+    },
+    {
+      "path": "src/agent/actions/index.ts",
+      "line": 6,
+      "column": 10,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'PageForwardActionDefinition' is defined but never used."
+    },
+    {
+      "path": "src/agent/actions/index.ts",
+      "line": 7,
+      "column": 10,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'ThinkingActionDefinition' is defined but never used."
+    },
+    {
+      "path": "src/agent/index.ts",
+      "line": 189,
+      "column": 30,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/index.ts",
+      "line": 604,
+      "column": 33,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/index.ts",
+      "line": 674,
+      "column": 33,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/index.ts",
+      "line": 724,
+      "column": 23,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/index.ts",
+      "line": 1082,
+      "column": 5,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'_params' is defined but never used."
+    },
+    {
+      "path": "src/agent/index.ts",
+      "line": 1150,
+      "column": 11,
+      "severity": 2,
+      "rule": "prefer-const",
+      "message": "'actionXPath' is never reassigned. Use 'const' instead."
+    },
+    {
+      "path": "src/agent/index.ts",
+      "line": 1477,
+      "column": 23,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/index.ts",
+      "line": 1478,
+      "column": 21,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/index.ts",
+      "line": 1521,
+      "column": 19,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/index.ts",
+      "line": 1537,
+      "column": 23,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/mcp/client.ts",
+      "line": 64,
+      "column": 37,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/mcp/client.ts",
+      "line": 129,
+      "column": 23,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/mcp/client.ts",
+      "line": 183,
+      "column": 32,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/mcp/client.ts",
+      "line": 185,
+      "column": 14,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/shared/action-cache-script.ts",
+      "line": 65,
+      "column": 31,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/shared/action-cache.ts",
+      "line": 119,
+      "column": 30,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/shared/action-cache.ts",
+      "line": 121,
+      "column": 41,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/shared/dom-capture.ts",
+      "line": 135,
+      "column": 15,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'domDuration' is assigned a value but never used."
+    },
+    {
+      "path": "src/agent/shared/run-cached-action.ts",
+      "line": 28,
+      "column": 8,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/shared/run-cached-action.ts",
+      "line": 29,
+      "column": 14,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/shared/run-cached-action.ts",
+      "line": 58,
+      "column": 37,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/shared/run-cached-action.ts",
+      "line": 174,
+      "column": 5,
+      "severity": 1,
+      "rule": "unused eslint-disable directive",
+      "message": "Unused eslint-disable directive (no problems were reported from 'no-console')."
+    },
+    {
+      "path": "src/agent/shared/run-cached-action.ts",
+      "line": 219,
+      "column": 8,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/agent/shared/run-cached-action.ts",
+      "line": 220,
+      "column": 14,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/cdp/element-resolver.ts",
+      "line": 164,
+      "column": 16,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'ensureRootSession' is defined but never used."
+    },
+    {
+      "path": "src/cdp/types.ts",
+      "line": 2,
+      "column": 12,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/cdp/types.ts",
+      "line": 3,
+      "column": 43,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/cdp/types.ts",
+      "line": 4,
+      "column": 45,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/context-providers/a11y-dom/build-maps.ts",
+      "line": 18,
+      "column": 3,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'debug' is defined but never used."
+    },
+    {
+      "path": "src/context-providers/a11y-dom/build-maps.ts",
+      "line": 24,
+      "column": 15,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'frameIndex' is assigned a value but never used."
+    },
+    {
+      "path": "src/context-providers/a11y-dom/performance.ts",
+      "line": 12,
+      "column": 29,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/context-providers/a11y-dom/performance.ts",
+      "line": 17,
+      "column": 29,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/context-providers/a11y-dom/performance.ts",
+      "line": 49,
+      "column": 54,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/context-providers/a11y-dom/performance.ts",
+      "line": 99,
+      "column": 48,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/context-providers/a11y-dom/performance.ts",
+      "line": 125,
+      "column": 87,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/context-providers/a11y-dom/performance.ts",
+      "line": 126,
+      "column": 83,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/context-providers/a11y-dom/performance.ts",
+      "line": 149,
+      "column": 47,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/context-providers/a11y-dom/performance.ts",
+      "line": 154,
+      "column": 22,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/context-providers/a11y-dom/performance.ts",
+      "line": 315,
+      "column": 29,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/context-providers/a11y-dom/performance.ts",
+      "line": 332,
+      "column": 29,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/context-providers/a11y-dom/scrollable-detection.ts",
+      "line": 182,
+      "column": 7,
+      "severity": 2,
+      "rule": "@typescript-eslint/ban-ts-comment",
+      "message": "Use \"@ts-expect-error\" instead of \"@ts-ignore\", as \"@ts-ignore\" will do nothing if the following line is error-free."
+    },
+    {
+      "path": "src/llm/providers/anthropic.ts",
+      "line": 62,
+      "column": 23,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/anthropic.ts",
+      "line": 71,
+      "column": 38,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/anthropic.ts",
+      "line": 157,
+      "column": 23,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/anthropic.ts",
+      "line": 158,
+      "column": 34,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/anthropic.ts",
+      "line": 163,
+      "column": 15,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/anthropic.ts",
+      "line": 257,
+      "column": 23,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/anthropic.ts",
+      "line": 258,
+      "column": 34,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/anthropic.ts",
+      "line": 271,
+      "column": 38,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/deepseek.ts",
+      "line": 68,
+      "column": 35,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/deepseek.ts",
+      "line": 95,
+      "column": 57,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/deepseek.ts",
+      "line": 118,
+      "column": 35,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/deepseek.ts",
+      "line": 121,
+      "column": 42,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/gemini.ts",
+      "line": 40,
+      "column": 5,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'options' is defined but never used."
+    },
+    {
+      "path": "src/llm/providers/gemini.ts",
+      "line": 47,
+      "column": 23,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/gemini.ts",
+      "line": 55,
+      "column": 35,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/gemini.ts",
+      "line": 82,
+      "column": 35,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/index.ts",
+      "line": 2,
+      "column": 30,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'OpenAIClientConfig' is defined but never used."
+    },
+    {
+      "path": "src/llm/providers/index.ts",
+      "line": 3,
+      "column": 33,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'AnthropicClientConfig' is defined but never used."
+    },
+    {
+      "path": "src/llm/providers/index.ts",
+      "line": 4,
+      "column": 30,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'GeminiClientConfig' is defined but never used."
+    },
+    {
+      "path": "src/llm/providers/index.ts",
+      "line": 5,
+      "column": 32,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'DeepSeekClientConfig' is defined but never used."
+    },
+    {
+      "path": "src/llm/providers/openai.ts",
+      "line": 39,
+      "column": 12,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/openai.ts",
+      "line": 46,
+      "column": 31,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/openai.ts",
+      "line": 109,
+      "column": 35,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/openai.ts",
+      "line": 136,
+      "column": 57,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/openai.ts",
+      "line": 173,
+      "column": 35,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/llm/providers/openai.ts",
+      "line": 176,
+      "column": 42,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/types/agent/actions/types.ts",
+      "line": 34,
+      "column": 11,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/types/agent/actions/types.ts",
+      "line": 39,
+      "column": 23,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/types/agent/actions/types.ts",
+      "line": 45,
+      "column": 23,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/types/agent/actions/types.ts",
+      "line": 45,
+      "column": 40,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/types/agent/types.ts",
+      "line": 7,
+      "column": 49,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/types/agent/types.ts",
+      "line": 7,
+      "column": 68,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/types/agent/types.ts",
+      "line": 99,
+      "column": 28,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/types/agent/types.ts",
+      "line": 157,
+      "column": 8,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/types/agent/types.ts",
+      "line": 158,
+      "column": 14,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/types/agent/types.ts",
+      "line": 235,
+      "column": 31,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/types/agent/types.ts",
+      "line": 239,
+      "column": 34,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/utils/debugWriter.ts",
+      "line": 19,
+      "column": 16,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/utils/html-to-markdown.ts",
+      "line": 15,
+      "column": 27,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/utils/html-to-markdown.ts",
+      "line": 15,
+      "column": 41,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/utils/html-to-markdown.ts",
+      "line": 22,
+      "column": 49,
+      "severity": 2,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "path": "src/utils/html-to-markdown.ts",
+      "line": 23,
+      "column": 5,
+      "severity": 2,
+      "rule": "no-var",
+      "message": "Unexpected var, use let or const instead."
+    },
+    {
+      "path": "src/utils/html-to-markdown.ts",
+      "line": 24,
+      "column": 5,
+      "severity": 2,
+      "rule": "no-var",
+      "message": "Unexpected var, use let or const instead."
+    },
+    {
+      "path": "src/utils/html-to-markdown.ts",
+      "line": 56,
+      "column": 30,
+      "severity": 2,
+      "rule": "no-useless-escape",
+      "message": "Unnecessary escape character: \\)."
+    }
+  ],
+  "files": [
+    {
+      "path": ".env.example",
+      "sha256": "4fa5a80347034a660b014cfa930c8f8dc16ce5a8e8a700b2065c7585925f7274",
+      "bytes": 720,
+      "kind": "text",
+      "line_count": 24,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            22,
+            23,
+            24
+          ],
+          "occurrences": 3
+        },
+        "hyperbrowser": {
+          "lines": [
+            11,
+            12
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "sha256": "680f84390dc7cac262042b22a449f8b5dd85f46d2f793527fc3639c8f7c91274",
+      "bytes": 257,
+      "kind": "text",
+      "line_count": 14,
+      "brand_matches": {}
+    },
+    {
+      "path": ".github/workflows/claude.yml",
+      "sha256": "887e633ee5cbba7299cad49c22722e8c9789a3369804b2eee3ccf15b6e6c7a8b",
+      "bytes": 1898,
+      "kind": "text",
+      "line_count": 50,
+      "brand_matches": {}
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "5e2542363dbcb5411ee2638e7c69e4982b6250f4148f97846594b02cd0ae696a",
+      "bytes": 2089,
+      "kind": "text",
+      "line_count": 137,
+      "brand_matches": {}
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "e4c257f3afebfb83b898c1d1e60e4a30c5b4e93b6218063f6627033321f52033",
+      "bytes": 8196,
+      "kind": "text",
+      "line_count": 57,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            11
+          ],
+          "occurrences": 1
+        },
+        "hyperbrowser": {
+          "lines": [
+            7,
+            26
+          ],
+          "occurrences": 3
+        },
+        "hyperpage_or_variable": {
+          "lines": [
+            36,
+            42
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "CLAUDE.md",
+      "sha256": "833b33513905ffb2693edf87bc66e5f2c9ec1b54690b02ce5b41894b92f1559f",
+      "bytes": 5459,
+      "kind": "text",
+      "line_count": 90,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            7,
+            28,
+            29,
+            43,
+            45,
+            73,
+            74,
+            75
+          ],
+          "occurrences": 8
+        },
+        "hyperbrowser": {
+          "lines": [
+            7,
+            16,
+            42,
+            62,
+            72
+          ],
+          "occurrences": 6
+        },
+        "hyperpage_or_variable": {
+          "lines": [
+            7,
+            56
+          ],
+          "occurrences": 2
+        },
+        "old_package": {
+          "lines": [
+            7,
+            62
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "4c29121d0da7bdb4893aa0f7035815e99a4f801a760434aac77370b2ad4c00bc",
+      "bytes": 730,
+      "kind": "text",
+      "line_count": 17,
+      "brand_matches": {}
+    },
+    {
+      "path": "README.md",
+      "sha256": "22f105e00727b4ce9c4ec675b7aecb7e0ad76ecb1ce575e13476a1d3275d584b",
+      "bytes": 18389,
+      "kind": "text",
+      "line_count": 593,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            2,
+            12,
+            26,
+            29,
+            54,
+            57,
+            72,
+            86,
+            101,
+            136,
+            150,
+            154,
+            192,
+            268,
+            275,
+            315,
+            320,
+            345,
+            349,
+            357,
+            365,
+            373,
+            383,
+            386,
+            389,
+            421,
+            459,
+            470,
+            521,
+            564,
+            566,
+            580,
+            590,
+            592
+          ],
+          "occurrences": 36
+        },
+        "hyperbrowser": {
+          "lines": [
+            9,
+            10,
+            12,
+            13,
+            27,
+            29,
+            36,
+            46,
+            49,
+            55,
+            89,
+            132,
+            139,
+            144,
+            150,
+            268,
+            270,
+            271,
+            272,
+            276,
+            386,
+            513,
+            590,
+            592,
+            593
+          ],
+          "occurrences": 29
+        },
+        "old_package": {
+          "lines": [
+            9,
+            10,
+            13,
+            46,
+            49,
+            55,
+            89,
+            132,
+            150,
+            513
+          ],
+          "occurrences": 10
+        }
+      }
+    },
+    {
+      "path": "assets/AGENTS.md",
+      "sha256": "3c2ee631955527928b082e1ab5e344a4852f7e0624a187c90cd6f3be21b7002d",
+      "bytes": 416,
+      "kind": "text",
+      "line_count": 14,
+      "brand_matches": {}
+    },
+    {
+      "path": "assets/flight-schedule.gif",
+      "sha256": "1ee3e12c8f31f6c4dd94c9775cb56b48661b85c0b77c0c75aff8ef350da911ce",
+      "bytes": 5435603,
+      "kind": "binary"
+    },
+    {
+      "path": "assets/hyperagent-banner.png",
+      "sha256": "ba2cf3fc639a9dbff9d7515ca1930184ae2e9033d565bd972cc57979e9ed5612",
+      "bytes": 80008,
+      "kind": "binary"
+    },
+    {
+      "path": "cli.sh",
+      "sha256": "d5e4e0d5cb95fd9d787986dafb6ba679225702cfa923befa4d8abe03d36a0b48",
+      "bytes": 129,
+      "kind": "text",
+      "line_count": 2,
+      "brand_matches": {}
+    },
+    {
+      "path": "currentState.md",
+      "sha256": "a4b7b764ab1d3181d855d6860132702fe77a3cb9bc2218d3955867b66a410301",
+      "bytes": 16593,
+      "kind": "text",
+      "line_count": 499,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            1,
+            4,
+            12,
+            17,
+            379
+          ],
+          "occurrences": 5
+        },
+        "hyperbrowser": {
+          "lines": [
+            373,
+            380,
+            382
+          ],
+          "occurrences": 3
+        },
+        "hyperpage_or_variable": {
+          "lines": [
+            24,
+            25,
+            33,
+            38,
+            344
+          ],
+          "occurrences": 5
+        }
+      }
+    },
+    {
+      "path": "docs/AGENTS.md",
+      "sha256": "a78d3158f70f3af7c5812c777e838f684379f78019e16776a66b85027f2a88bb",
+      "bytes": 535,
+      "kind": "text",
+      "line_count": 14,
+      "brand_matches": {}
+    },
+    {
+      "path": "docs/cdp-overview.md",
+      "sha256": "10f360b8982fac2a8187fca55fe18d13d32fa566f9619c49d7d761bae5f984e8",
+      "bytes": 137576,
+      "kind": "text",
+      "line_count": 3484,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            1036,
+            1065,
+            1682,
+            1743,
+            3156
+          ],
+          "occurrences": 5
+        }
+      }
+    },
+    {
+      "path": "eslint.config.mjs",
+      "sha256": "fb86796f4bd5b616383a15fe2d9077f895637e4290845656f4c6d5a300a8e73e",
+      "bytes": 744,
+      "kind": "text",
+      "line_count": 27,
+      "brand_matches": {}
+    },
+    {
+      "path": "evals/AGENTS.md",
+      "sha256": "ade43fd7ebd8dc09ea1006782facb865ea9b3ef1f6317e5513e1541fdd04d721",
+      "bytes": 550,
+      "kind": "text",
+      "line_count": 14,
+      "brand_matches": {}
+    },
+    {
+      "path": "evals/WebVoyager_data.jsonl",
+      "sha256": "69b19fd86c23f1a500244a3724e039aa7ca6a1223d03e11eb10e308d4f11c488",
+      "bytes": 140890,
+      "kind": "text",
+      "line_count": 643,
+      "brand_matches": {}
+    },
+    {
+      "path": "evals/WebVoyager_reference.json",
+      "sha256": "30b1819187fac71cb27e6914b6cd802ff92d08c851f126fd7a209723f45faef0",
+      "bytes": 103177,
+      "kind": "text",
+      "line_count": 3294,
+      "brand_matches": {}
+    },
+    {
+      "path": "examples/AGENTS.md",
+      "sha256": "c045531db8d2c14c2f95e75c8498dbcd40d64c35b7089af729d6e3083a9faa6d",
+      "bytes": 618,
+      "kind": "text",
+      "line_count": 15,
+      "brand_matches": {}
+    },
+    {
+      "path": "examples/browser-providers/hyperbrowser.ts",
+      "sha256": "ec43baea86bbd5488fe68234885231a01bb79208362635e43a22546e37f1bb55",
+      "bytes": 2040,
+      "kind": "text",
+      "line_count": 71,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            10,
+            27,
+            32
+          ],
+          "occurrences": 4
+        },
+        "hyperbrowser": {
+          "lines": [
+            2,
+            4,
+            10,
+            22,
+            27,
+            38,
+            39
+          ],
+          "occurrences": 7
+        },
+        "old_package": {
+          "lines": [
+            27
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "examples/custom-tool/search/exa.ts",
+      "sha256": "0f1da70cec7af8a67353d33e76df4f6383a9ec265fa443e6de70fd2b0b41915a",
+      "bytes": 4716,
+      "kind": "text",
+      "line_count": 138,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            45,
+            93
+          ],
+          "occurrences": 3
+        },
+        "hyperbrowser": {
+          "lines": [
+            45,
+            50
+          ],
+          "occurrences": 2
+        },
+        "old_package": {
+          "lines": [
+            45,
+            50
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "examples/custom-tool/wikipedia-random-article/run-custom-tool.ts",
+      "sha256": "df226a876772a44222cf22bead72e03d5188237fdffe8d8e1ec39a75b61acca9",
+      "bytes": 2903,
+      "kind": "text",
+      "line_count": 97,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            27,
+            62
+          ],
+          "occurrences": 3
+        },
+        "hyperbrowser": {
+          "lines": [
+            27,
+            32
+          ],
+          "occurrences": 2
+        },
+        "old_package": {
+          "lines": [
+            27,
+            32
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "examples/llms/anthropic.ts",
+      "sha256": "155871493146fee1127468b530bcd5f87f752d0fbd92a916da88852a2c746103",
+      "bytes": 1920,
+      "kind": "text",
+      "line_count": 67,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            10,
+            27,
+            35
+          ],
+          "occurrences": 4
+        },
+        "hyperbrowser": {
+          "lines": [
+            27
+          ],
+          "occurrences": 1
+        },
+        "old_package": {
+          "lines": [
+            27
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "examples/llms/deepseek.ts",
+      "sha256": "09e35363ad8614deb8a6cce3871043329927a66f72589ee77974f080c86c0ee6",
+      "bytes": 1887,
+      "kind": "text",
+      "line_count": 68,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            10,
+            27,
+            35
+          ],
+          "occurrences": 4
+        },
+        "hyperbrowser": {
+          "lines": [
+            27
+          ],
+          "occurrences": 1
+        },
+        "old_package": {
+          "lines": [
+            27
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "examples/llms/gemini.ts",
+      "sha256": "c660cfee98a29726d2686a1ac60d26dc76da1ffda8ec017582bc2ab5ae71ccbd",
+      "bytes": 1916,
+      "kind": "text",
+      "line_count": 67,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            10,
+            27,
+            35
+          ],
+          "occurrences": 4
+        },
+        "hyperbrowser": {
+          "lines": [
+            27
+          ],
+          "occurrences": 1
+        },
+        "old_package": {
+          "lines": [
+            27
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "examples/llms/openai.ts",
+      "sha256": "87ca2be5f07b64b82cd2ff9bd87a8e34eed1019412af504b501dd7cf7372af24",
+      "bytes": 1870,
+      "kind": "text",
+      "line_count": 68,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            10,
+            27,
+            35
+          ],
+          "occurrences": 4
+        },
+        "hyperbrowser": {
+          "lines": [
+            27
+          ],
+          "occurrences": 1
+        },
+        "old_package": {
+          "lines": [
+            27
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "examples/mcp/google-sheets/best-buy-reviews.ts",
+      "sha256": "1e63e727b6f34ca762abda596f1cba6bd649b2429a3640c397682d6c41cb4997",
+      "bytes": 6479,
+      "kind": "text",
+      "line_count": 157,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            65,
+            87,
+            90
+          ],
+          "occurrences": 4
+        },
+        "hyperbrowser": {
+          "lines": [
+            65
+          ],
+          "occurrences": 1
+        },
+        "old_package": {
+          "lines": [
+            65
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "examples/mcp/google-sheets/car-price-comparison.ts",
+      "sha256": "f0afc72320f5d190421fc7d79ab213bde8ee04972887f1415ed1fd624239d0e7",
+      "bytes": 7039,
+      "kind": "text",
+      "line_count": 171,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4
+          ],
+          "occurrences": 1
+        },
+        "hyperbrowser": {
+          "lines": [
+            68,
+            98,
+            101
+          ],
+          "occurrences": 4
+        },
+        "old_package": {
+          "lines": [
+            68
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "examples/mcp/google-sheets/most-populated-states.ts",
+      "sha256": "e62ad996c4facb58258eb72cd607f5cd112dbccc5da7f98f1eba895e18f6a753",
+      "bytes": 6099,
+      "kind": "text",
+      "line_count": 155,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            65,
+            85,
+            88
+          ],
+          "occurrences": 4
+        },
+        "hyperbrowser": {
+          "lines": [
+            65
+          ],
+          "occurrences": 1
+        },
+        "old_package": {
+          "lines": [
+            65
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "examples/mcp/notion/create-shopping-list.ts",
+      "sha256": "6cc943ef20c6c24bd3628f5e72a3710ae3378d48f2fa60e62bafcceb49ddc39b",
+      "bytes": 5610,
+      "kind": "text",
+      "line_count": 155,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4
+          ],
+          "occurrences": 1
+        },
+        "hyperbrowser": {
+          "lines": [
+            58,
+            85,
+            88
+          ],
+          "occurrences": 4
+        },
+        "old_package": {
+          "lines": [
+            58
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "examples/mcp/weather/get-weather-alert.ts",
+      "sha256": "578eef210493c1a6114a64658e8ee5f7e9c87a521aa3090cb33ac3a12e323f6e",
+      "bytes": 3495,
+      "kind": "text",
+      "line_count": 115,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            47,
+            66
+          ],
+          "occurrences": 3
+        },
+        "hyperbrowser": {
+          "lines": [
+            47,
+            63
+          ],
+          "occurrences": 2
+        },
+        "old_package": {
+          "lines": [
+            47
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "examples/mcp/weather/servers/weather-server.js",
+      "sha256": "1b3d0b7bb36cedd94c20b303a68de989b412bad41edd13b4d9539c03f4cb5d5e",
+      "bytes": 5835,
+      "kind": "text",
+      "line_count": 238,
+      "brand_matches": {}
+    },
+    {
+      "path": "examples/output-to-schema/output-to-schema.ts",
+      "sha256": "36bddeba9d3bad420d10886b3c13b75a64362868841775dc9427b2daac54147f",
+      "bytes": 2582,
+      "kind": "text",
+      "line_count": 88,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            27,
+            38
+          ],
+          "occurrences": 3
+        },
+        "hyperbrowser": {
+          "lines": [
+            27,
+            48
+          ],
+          "occurrences": 2
+        },
+        "old_package": {
+          "lines": [
+            27
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "examples/simple/add-to-amazon-cart.ts",
+      "sha256": "747f2e87f0706d802193f95569dcf0d767da9be9b8964f1bbc762e076fe46e27",
+      "bytes": 2017,
+      "kind": "text",
+      "line_count": 66,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            27,
+            33
+          ],
+          "occurrences": 3
+        },
+        "hyperbrowser": {
+          "lines": [
+            27
+          ],
+          "occurrences": 1
+        },
+        "old_package": {
+          "lines": [
+            27
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "package.json",
+      "sha256": "3b472044f66558638838298ea6dc343e5b1d781a99b26ff8fb0bc78c0d9062ca",
+      "bytes": 3213,
+      "kind": "text",
+      "line_count": 122,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            21
+          ],
+          "occurrences": 1
+        },
+        "hyperbrowser": {
+          "lines": [
+            2,
+            4,
+            30,
+            42
+          ],
+          "occurrences": 4
+        },
+        "old_package": {
+          "lines": [
+            2
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "scripts/AGENTS.md",
+      "sha256": "0dca0a7dee8f72085873fc5c150004f66c280a1da3f88b69393a7fa2db614a16",
+      "bytes": 637,
+      "kind": "text",
+      "line_count": 15,
+      "brand_matches": {}
+    },
+    {
+      "path": "scripts/compare-eval-runs.ts",
+      "sha256": "d95326c09a531f92f90e11fac37d1803fd4180c95a01a922418de7b3e63e1765",
+      "bytes": 7961,
+      "kind": "text",
+      "line_count": 286,
+      "brand_matches": {}
+    },
+    {
+      "path": "scripts/dogcat.ts",
+      "sha256": "8ec5cc786128b31e6441203529ecc1f4b13719ed1562e7e1ea7152da132ddb55",
+      "bytes": 3203,
+      "kind": "text",
+      "line_count": 105,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            3,
+            16,
+            19,
+            20,
+            21,
+            32,
+            89,
+            93
+          ],
+          "occurrences": 8
+        },
+        "hyperpage_or_variable": {
+          "lines": [
+            4,
+            30
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "scripts/gasPrice.ts",
+      "sha256": "2fba083e67c818d9dcd207aa693105050c2cbf2c87a673c77f92af5400e7979d",
+      "bytes": 3693,
+      "kind": "text",
+      "line_count": 123,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            5,
+            17,
+            20,
+            21,
+            22,
+            39,
+            107,
+            111
+          ],
+          "occurrences": 8
+        },
+        "hyperpage_or_variable": {
+          "lines": [
+            4,
+            37
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "scripts/hotelInvoice.ts",
+      "sha256": "20ccf47bfe9ce2c63f1a95b35b1b46108f6c4b852011e1d086627d88573adaf3",
+      "bytes": 7452,
+      "kind": "text",
+      "line_count": 199,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            17,
+            20,
+            21,
+            22,
+            33,
+            183,
+            187
+          ],
+          "occurrences": 8
+        },
+        "hyperpage_or_variable": {
+          "lines": [
+            3,
+            31
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "scripts/run-webvoyager-eval.ts",
+      "sha256": "89f5196eaed84c3743445f5e84af683cc4478a89507d98e381cd60db60d34f08",
+      "bytes": 12736,
+      "kind": "text",
+      "line_count": 456,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            1,
+            187,
+            299
+          ],
+          "occurrences": 3
+        },
+        "hyperbrowser": {
+          "lines": [
+            304
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "scripts/test-async.ts",
+      "sha256": "a46466d41b65c8e803c333108a729fb0f5def78101b272594bdc8175e9df8a48",
+      "bytes": 924,
+      "kind": "text",
+      "line_count": 30,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            1,
+            7
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "scripts/test-extract.ts",
+      "sha256": "a13f5068dd9f271df0156a3f031917c1e79f1ce0ffa1297fe31b6a7837c50300",
+      "bytes": 531,
+      "kind": "text",
+      "line_count": 21,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            2,
+            7
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "scripts/test-page-ai.ts",
+      "sha256": "5a04fa5f3d79ada18c63b781f125a155982c398cd43105ab70ad0f82217338a7",
+      "bytes": 2318,
+      "kind": "text",
+      "line_count": 73,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            1,
+            7,
+            45
+          ],
+          "occurrences": 3
+        },
+        "hyperbrowser": {
+          "lines": [
+            16,
+            50
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "scripts/test-page-iframes.ts",
+      "sha256": "6392cee76ed40f8937397a0ea06ec91b00ea3a36811eacc8e9edb8407b00dde6",
+      "bytes": 449,
+      "kind": "text",
+      "line_count": 19,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            1,
+            7
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "scripts/test-variables.ts",
+      "sha256": "3cbe7fef0ac0800990183a4dfb215e805d00248fec6fbb9203d24c4395a6198e",
+      "bytes": 1260,
+      "kind": "text",
+      "line_count": 39,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            1,
+            7
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "scripts/test.ts",
+      "sha256": "d29747110865e07d7e29b00d17e7f7aa19b327ef28f89ef52036f9fb59ce59e1",
+      "bytes": 1040,
+      "kind": "text",
+      "line_count": 29,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            1,
+            7
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "src/AGENTS.md",
+      "sha256": "de78a09daa344fe448d1368a3448498ddef7a5942340ff726817807b21eba33b",
+      "bytes": 774,
+      "kind": "text",
+      "line_count": 15,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/AGENTS.md",
+      "sha256": "16842b4abb4ea197339b9324e1fdd792df5470f92d68318d66daa2c0804e2773",
+      "bytes": 1029,
+      "kind": "text",
+      "line_count": 19,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/actions/act-element.ts",
+      "sha256": "9f5e2f7d6008c19b36ce1a792426ae8b2d49294c96f0f54eadf17e4e7b59c7b5",
+      "bytes": 1962,
+      "kind": "text",
+      "line_count": 55,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/actions/complete-with-output-schema.ts",
+      "sha256": "676d8856de5b7cb68d07ec140a180480ddc4be9ee9f90fa0e618f9c8b0f78891",
+      "bytes": 1628,
+      "kind": "text",
+      "line_count": 49,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/actions/complete.ts",
+      "sha256": "3461c867eae20aefd2fdfa15690d65ac9933328737d4f47cf022cfdb59b4401a",
+      "bytes": 1123,
+      "kind": "text",
+      "line_count": 32,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/actions/extract.ts",
+      "sha256": "eccf369bf2add21a9aa55409f068a01c7da0d02bb7c3974dfd02dc0c6e56e7b1",
+      "bytes": 3605,
+      "kind": "text",
+      "line_count": 107,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            75
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "src/agent/actions/go-to-url.ts",
+      "sha256": "06fa4745c45f47be6f9a62ad1060cf30183da8b6446543e14cdcfcb5f16df427",
+      "bytes": 756,
+      "kind": "text",
+      "line_count": 23,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/actions/index.ts",
+      "sha256": "5b3abdcf3424986d5dd4bb8e608537a571f159afd6ec4ad53f4eff917b68125b",
+      "bytes": 1860,
+      "kind": "text",
+      "line_count": 53,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/actions/page-back.ts",
+      "sha256": "3bca7c31e068b361dc02b979b2119eeef3bdd7b8f70554d3e1d5f51dc69a2830",
+      "bytes": 644,
+      "kind": "text",
+      "line_count": 20,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/actions/page-forward.ts",
+      "sha256": "d15ccc06110479f776457ad22f1d407d843d07ad5e32738a42d3a48b472c8c0a",
+      "bytes": 662,
+      "kind": "text",
+      "line_count": 20,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/actions/pdf.ts",
+      "sha256": "354b464b2ec8bdb145f702fb3a2d27c8692fb60f6851ebe4f0bf7e3d16b9ad5e",
+      "bytes": 2334,
+      "kind": "text",
+      "line_count": 76,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/actions/refresh-page.ts",
+      "sha256": "b84d91029fdd92e9d74bd8141f738e19650a724a865c70d149e6d1e6925d8322",
+      "bytes": 764,
+      "kind": "text",
+      "line_count": 22,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/actions/scroll.ts",
+      "sha256": "d3b0da1e6877073213232e33a6f2ec94d14c5a234304668dcf5120d7310dbb06",
+      "bytes": 1249,
+      "kind": "text",
+      "line_count": 38,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/actions/shared/perform-action.ts",
+      "sha256": "021edab0071595e23350da3e9414ddc0035096fa39817a1cafdba4552840992f",
+      "bytes": 4599,
+      "kind": "text",
+      "line_count": 155,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/actions/thinking.ts",
+      "sha256": "d3275761c4c5dd5f20331e8edbe447078b9420abf7be48022bdb1f1a200fb906",
+      "bytes": 1137,
+      "kind": "text",
+      "line_count": 32,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/actions/wait.ts",
+      "sha256": "51ca044afaa613d46d09012cc275d12d5ac05502257eb671e22d51c61633e34a",
+      "bytes": 1500,
+      "kind": "text",
+      "line_count": 40,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/error.ts",
+      "sha256": "ddf0c34fc92a5fce30aeda7728d8876e355c4648e3a616f50cb05aa84032fa9c",
+      "bytes": 198,
+      "kind": "text",
+      "line_count": 9,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            1,
+            6,
+            7
+          ],
+          "occurrences": 3
+        }
+      }
+    },
+    {
+      "path": "src/agent/examine-dom/index.ts",
+      "sha256": "a41d2660b0d85a65a5053ee249f600a8a116d07fc20d1e6375fe794b8b90ec2c",
+      "bytes": 4207,
+      "kind": "text",
+      "line_count": 135,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            8,
+            43
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "src/agent/examine-dom/prompts.ts",
+      "sha256": "759bade4389c1039c05f9be3a43680d2df1a7bd0e78510e3ebd2b66ba47aed58",
+      "bytes": 3313,
+      "kind": "text",
+      "line_count": 68,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/examine-dom/schema.ts",
+      "sha256": "6fc1ddd6aa47eefe8026864c5d8d65984dcc6f758a9b26eff2845553c651647d",
+      "bytes": 1084,
+      "kind": "text",
+      "line_count": 38,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/examine-dom/types.ts",
+      "sha256": "fc9ea394991e93203a41e78744a9595cd448f443bf37e30863c9e2a7b5e95305",
+      "bytes": 1030,
+      "kind": "text",
+      "line_count": 44,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/index.ts",
+      "sha256": "88e6abfc16dec322d0dfac1b8a25e27f7fa9998ba7774f0310af32dd7c3ed987",
+      "bytes": 50715,
+      "kind": "text",
+      "line_count": 1650,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            6,
+            10,
+            35,
+            65,
+            76,
+            106,
+            115,
+            121,
+            253,
+            267,
+            278,
+            308,
+            322,
+            345,
+            394,
+            474,
+            900,
+            908,
+            969,
+            1109,
+            1110,
+            1116,
+            1137,
+            1145,
+            1161,
+            1265,
+            1282,
+            1283,
+            1288,
+            1298,
+            1554,
+            1592
+          ],
+          "occurrences": 32
+        },
+        "hyperbrowser": {
+          "lines": [
+            32,
+            81,
+            82,
+            130,
+            131,
+            132,
+            136,
+            155
+          ],
+          "occurrences": 9
+        },
+        "hyperpage_or_variable": {
+          "lines": [
+            45,
+            46,
+            92,
+            95,
+            97,
+            205,
+            214,
+            223,
+            246,
+            248,
+            255,
+            260,
+            262,
+            270,
+            332,
+            535,
+            542,
+            598,
+            614,
+            615,
+            616,
+            648,
+            649,
+            650,
+            680,
+            706,
+            767,
+            774,
+            1473,
+            1474,
+            1477,
+            1478,
+            1490,
+            1506,
+            1521,
+            1544,
+            1560,
+            1563,
+            1566,
+            1570,
+            1572,
+            1583,
+            1587,
+            1590,
+            1638
+          ],
+          "occurrences": 48
+        }
+      }
+    },
+    {
+      "path": "src/agent/mcp/client.ts",
+      "sha256": "53b5db0e7a3d870e766090262377b7cf0e3cf4c3a944d39b99e6c12cd2719aa6",
+      "bytes": 8856,
+      "kind": "text",
+      "line_count": 309,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            85
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "src/agent/messages/builder.ts",
+      "sha256": "2f2956985b9faf16590f8eebb5a835b65a374e55d9301047409cf7442bd65967",
+      "bytes": 2528,
+      "kind": "text",
+      "line_count": 92,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            2,
+            10,
+            17
+          ],
+          "occurrences": 3
+        },
+        "hyperpage_or_variable": {
+          "lines": [
+            7,
+            16
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "src/agent/messages/examples-actions.ts",
+      "sha256": "490aa94db10fcf5069647d93cdada354a0ea9c07121a2abc7d3434122bee7f8b",
+      "bytes": 2648,
+      "kind": "text",
+      "line_count": 21,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/messages/input-format.ts",
+      "sha256": "d02c73d8179a688aef056217cdc7e3cbf18a1c1dde84f2e85e89c042cc82d07b",
+      "bytes": 1541,
+      "kind": "text",
+      "line_count": 33,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/messages/output-format.ts",
+      "sha256": "08c2e28a111456336c9af6b0336b3bae509e7ec9f2711f338c2cc787dbd6252b",
+      "bytes": 1015,
+      "kind": "text",
+      "line_count": 18,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/messages/system-prompt.ts",
+      "sha256": "ab6beae91bf0201d39f3e5afe678ba147c79041ed21bc992cdb3a80392d6df00",
+      "bytes": 3448,
+      "kind": "text",
+      "line_count": 78,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/messages/utils.ts",
+      "sha256": "073411e180b8d3896930e06f39b5e3e441b85ec64efe8e329c06611ed64cc3bd",
+      "bytes": 530,
+      "kind": "text",
+      "line_count": 13,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/shared/action-cache-exec.ts",
+      "sha256": "9011c53c70480432960c56cc328b4019fb455d52b86d08468cc51c38b4996811",
+      "bytes": 4598,
+      "kind": "text",
+      "line_count": 210,
+      "brand_matches": {
+        "hyperpage_or_variable": {
+          "lines": [
+            1,
+            28,
+            67
+          ],
+          "occurrences": 3
+        }
+      }
+    },
+    {
+      "path": "src/agent/shared/action-cache-script.ts",
+      "sha256": "af2239e8b2abb3fcbee25c202b8d078fa4be8aa359277b9346c98b7895f6794d",
+      "bytes": 4178,
+      "kind": "text",
+      "line_count": 145,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            125,
+            127
+          ],
+          "occurrences": 2
+        },
+        "hyperbrowser": {
+          "lines": [
+            125
+          ],
+          "occurrences": 1
+        },
+        "old_package": {
+          "lines": [
+            125
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "src/agent/shared/action-cache.ts",
+      "sha256": "219e6ae6fe561808e32e19896303110fce3f1ec80b1bb455c483a89839cd13c0",
+      "bytes": 4094,
+      "kind": "text",
+      "line_count": 142,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/shared/action-restrictions.ts",
+      "sha256": "e1c8907e792059db392e42dc935a8e0eb1bb459d7e74b71e2dc5ad4640ab2579",
+      "bytes": 3263,
+      "kind": "text",
+      "line_count": 118,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/shared/dom-capture.ts",
+      "sha256": "e001f34b5a9996b33f87c7aeea49f27a1b65614bfe487e9fba1519c51f62ff78",
+      "bytes": 4229,
+      "kind": "text",
+      "line_count": 164,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/shared/element-locator.ts",
+      "sha256": "035dff9b88098117fa72bb9b96104da8d7f35c37c4e5e132556bb99f2ef83310",
+      "bytes": 4089,
+      "kind": "text",
+      "line_count": 129,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            3,
+            12,
+            50,
+            70,
+            98
+          ],
+          "occurrences": 5
+        }
+      }
+    },
+    {
+      "path": "src/agent/shared/execute-playwright-method.ts",
+      "sha256": "949599a171f57b4604e1d9e046085b9ed5e58dd5943007df8ac8b34e10b79ce5",
+      "bytes": 7309,
+      "kind": "text",
+      "line_count": 222,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            3
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "src/agent/shared/find-element.ts",
+      "sha256": "54323f47c45ed938b7d32350874ea2006298a5cff727339ba6f35b839c3addc1",
+      "bytes": 5061,
+      "kind": "text",
+      "line_count": 161,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            7,
+            63
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "src/agent/shared/run-cached-action.ts",
+      "sha256": "5e3f88855f6a65d2f3dcce869ae5d73769e159149b425b7c4c7e7bb795f05cb0",
+      "bytes": 8113,
+      "kind": "text",
+      "line_count": 311,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/shared/runtime-context.ts",
+      "sha256": "24905223f61ce0237c0a9eb411d12ec6a7d712b2eb2693d3de99bdeab151ec93",
+      "bytes": 1256,
+      "kind": "text",
+      "line_count": 45,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/agent/shared/xpath-cdp-resolver.ts",
+      "sha256": "4f0fd2c66a0de70fa12badfb744a113d1d70ba68d0062071ef459e40f9848b8d",
+      "bytes": 2887,
+      "kind": "text",
+      "line_count": 101,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            3,
+            35,
+            67,
+            78
+          ],
+          "occurrences": 4
+        }
+      }
+    },
+    {
+      "path": "src/agent/tools/agent.ts",
+      "sha256": "9d6f747487b8e5fa7ef5ee477227e22dd96ee4cb918bd15e649b4af7c8c215c1",
+      "bytes": 21832,
+      "kind": "text",
+      "line_count": 702,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            31,
+            39,
+            221,
+            226,
+            234
+          ],
+          "occurrences": 5
+        },
+        "hyperbrowser": {
+          "lines": [
+            28,
+            29
+          ],
+          "occurrences": 2
+        },
+        "old_package": {
+          "lines": [
+            28,
+            29
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "src/agent/tools/types.ts",
+      "sha256": "e6b01c3306af62143f4a897e0301102de97dd73fe7fccd32d5c3969cbfc1db54",
+      "bytes": 633,
+      "kind": "text",
+      "line_count": 22,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            3,
+            14
+          ],
+          "occurrences": 2
+        },
+        "hyperpage_or_variable": {
+          "lines": [
+            4,
+            11
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "src/browser-providers/AGENTS.md",
+      "sha256": "272876d97103888cb845cedfdbf22bd1cf56ae2364768f60cee92b7f5901d56a",
+      "bytes": 748,
+      "kind": "text",
+      "line_count": 15,
+      "brand_matches": {
+        "hyperbrowser": {
+          "lines": [
+            9
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "src/browser-providers/hyperbrowser.ts",
+      "sha256": "a51c831397cb518f56f3c43205c76317707384d0ecb409afdd3fe0becedb92f1",
+      "bytes": 1898,
+      "kind": "text",
+      "line_count": 71,
+      "brand_matches": {
+        "hyperbrowser": {
+          "lines": [
+            2,
+            5,
+            7,
+            11,
+            14,
+            17,
+            24,
+            34,
+            45
+          ],
+          "occurrences": 10
+        }
+      }
+    },
+    {
+      "path": "src/browser-providers/index.ts",
+      "sha256": "45d429f75ed25081d79c2237406e992e3ba1a1e0f09c4693c55021700a432be3",
+      "bytes": 159,
+      "kind": "text",
+      "line_count": 4,
+      "brand_matches": {
+        "hyperbrowser": {
+          "lines": [
+            1,
+            4
+          ],
+          "occurrences": 3
+        }
+      }
+    },
+    {
+      "path": "src/browser-providers/local.ts",
+      "sha256": "f15e77d35a2ad0b291dc60f48ce237924bf5d887303a72982ab284b1afd8a7b5",
+      "bytes": 960,
+      "kind": "text",
+      "line_count": 31,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/cdp/AGENTS.md",
+      "sha256": "86c631e09cbe8105de957847a0a502d57d23b25c0b796ee85f6c12649fff0289",
+      "bytes": 731,
+      "kind": "text",
+      "line_count": 15,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/cdp/bounding-box.ts",
+      "sha256": "5f99d5a7c793ab69c77afa9e4694f667c11aaca0efd3fdebe59567158d979fa2",
+      "bytes": 3595,
+      "kind": "text",
+      "line_count": 155,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            53,
+            56
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "src/cdp/element-resolver.ts",
+      "sha256": "66edfc8d09d5a7da4392c48bd63974b44b0f92070fefe59a305bd8df60393eaa",
+      "bytes": 10184,
+      "kind": "text",
+      "line_count": 365,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/cdp/frame-context-manager.ts",
+      "sha256": "7fb0039dbab0d84672e0ee3e32bbd3cb1c32e7bafbfa33fa342e7a97596eb321",
+      "bytes": 23112,
+      "kind": "text",
+      "line_count": 739,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/cdp/frame-filters.ts",
+      "sha256": "cca55c1e09f693c8c048e6da6840596e97c1a42a1f26d94534ce6086064e4f6b",
+      "bytes": 2993,
+      "kind": "text",
+      "line_count": 134,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/cdp/frame-graph.ts",
+      "sha256": "ef1c243b7b2ae5ec233519a0e6ce447b28015c2062198fbc3488c7692ef184a2",
+      "bytes": 3961,
+      "kind": "text",
+      "line_count": 129,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/cdp/index.ts",
+      "sha256": "b71a026580f809baa72f10b13c9d2a4940d6f1a285c9d55f8df7fff3d85ce07e",
+      "bytes": 676,
+      "kind": "text",
+      "line_count": 25,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/cdp/interactions.ts",
+      "sha256": "7e2e48aeed1f533440a35f3e070d1cc10e4c7db281accace3a87829d3f32f51b",
+      "bytes": 35915,
+      "kind": "text",
+      "line_count": 1273,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/cdp/playwright-adapter.ts",
+      "sha256": "1155b3a8c9c4e02a0f9a576e9bb080052487e0b473729cb58461e107c1e0cae9",
+      "bytes": 8336,
+      "kind": "text",
+      "line_count": 297,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/cdp/script-injector.ts",
+      "sha256": "fcabb727090a79cad8e9ea1c584436e18c8d6a27c429a97f74b8ddc51f093992",
+      "bytes": 2101,
+      "kind": "text",
+      "line_count": 86,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/cdp/types.ts",
+      "sha256": "44a6c01a5231950643a6d4d9f3a1645bae288798c5bf90b54df9e881c215655f",
+      "bytes": 1132,
+      "kind": "text",
+      "line_count": 52,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/cli/AGENTS.md",
+      "sha256": "64ccce005aba87fc9828f2a42ef061822cf44bc47b1126806006fe4b2a49d876",
+      "bytes": 621,
+      "kind": "text",
+      "line_count": 14,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            8
+          ],
+          "occurrences": 1
+        },
+        "hyperbrowser": {
+          "lines": [
+            10
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "src/cli/index.ts",
+      "sha256": "ab09781bc11dbb74351797d64c046217c97df5321d82d4e71c343a1256525ff6",
+      "bytes": 10075,
+      "kind": "text",
+      "line_count": 300,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            11,
+            22,
+            50,
+            71,
+            151,
+            162,
+            172,
+            215,
+            232,
+            257,
+            286
+          ],
+          "occurrences": 11
+        },
+        "hyperbrowser": {
+          "lines": [
+            23,
+            30,
+            31,
+            41,
+            45,
+            55,
+            56,
+            59,
+            64,
+            68,
+            73,
+            273
+          ],
+          "occurrences": 13
+        }
+      }
+    },
+    {
+      "path": "src/context-providers/AGENTS.md",
+      "sha256": "5c293522d89e1f4124eb7adf73c57c98a7a25a15664e70ec2b2fe72ef2eabc05",
+      "bytes": 827,
+      "kind": "text",
+      "line_count": 15,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/context-providers/a11y-dom/bounding-box-batch.ts",
+      "sha256": "e28dd5c0ed5dd690bcdba4d44f9692a81211a4a52dd621834276b44290c68b2e",
+      "bytes": 11611,
+      "kind": "text",
+      "line_count": 373,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            50,
+            74,
+            131,
+            267
+          ],
+          "occurrences": 5
+        }
+      }
+    },
+    {
+      "path": "src/context-providers/a11y-dom/build-maps.ts",
+      "sha256": "54b25ab8f24af91a8af94d5875cfb660b5a8b7e70e25b56921d1c43f730241ac",
+      "bytes": 12955,
+      "kind": "text",
+      "line_count": 374,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/context-providers/a11y-dom/build-tree.ts",
+      "sha256": "b26c7bda29fb567fcdd6969eb79ced42830b8b75d1a94be5c24fdf1ce2ace8d8",
+      "bytes": 8650,
+      "kind": "text",
+      "line_count": 264,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/context-providers/a11y-dom/dom-cache.ts",
+      "sha256": "ec215687fd383ad369db5c990f7ba4b28ee1f755c1868e90f3209d2be4558205",
+      "bytes": 1603,
+      "kind": "text",
+      "line_count": 60,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/context-providers/a11y-dom/index.ts",
+      "sha256": "ba82be5fabbcb1702c0cdef24baaf5baf2d353347f1c332ea7d747cdd1e0a3ad",
+      "bytes": 37396,
+      "kind": "text",
+      "line_count": 1263,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            919
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "src/context-providers/a11y-dom/performance.ts",
+      "sha256": "9072e91fa71047e7132f4b828235c99f4322a34c12ae98407f16f76209735637",
+      "bytes": 8743,
+      "kind": "text",
+      "line_count": 340,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/context-providers/a11y-dom/scrollable-detection.ts",
+      "sha256": "0bf15d7ef80fd1c93c4b689b6bab3b5a8cdac07f0095c57b2b9a25515276eec2",
+      "bytes": 7381,
+      "kind": "text",
+      "line_count": 267,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            163,
+            183
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "src/context-providers/a11y-dom/types.ts",
+      "sha256": "976200144b9cfdc684aa919a2676713b2ca5a8be599bd19b6d45a92464315cde",
+      "bytes": 8051,
+      "kind": "text",
+      "line_count": 350,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            168
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "src/context-providers/a11y-dom/utils.ts",
+      "sha256": "df04f954215cc559deafd38caeb4f25538dff6d2042bf34b2e314e93481ccf4d",
+      "bytes": 12146,
+      "kind": "text",
+      "line_count": 453,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/context-providers/a11y-dom/visual-overlay.ts",
+      "sha256": "997c6b9758ade287102de7956cb48df766565f2cdc7a8e26fb6746e286217bd3",
+      "bytes": 4402,
+      "kind": "text",
+      "line_count": 172,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/context-providers/shared/highlight-colors.ts",
+      "sha256": "0fab4f8bc9aeaa94e4bbdcc2f6c34bc17c91204bee8e993fcaeaccd08317e42c",
+      "bytes": 1948,
+      "kind": "text",
+      "line_count": 72,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/context-providers/shared/screenshot.ts",
+      "sha256": "6566e92e9a7b53707a0dfee338f194eb22c5221e08dac12d92359d0824c6bf24",
+      "bytes": 1510,
+      "kind": "text",
+      "line_count": 51,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/custom-actions/AGENTS.md",
+      "sha256": "34b78acfddfda7a08cf8c7c96e1fd21c009279d3cc604e40a2bafdf0bde7a946",
+      "bytes": 582,
+      "kind": "text",
+      "line_count": 14,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            9
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "src/custom-actions/index.ts",
+      "sha256": "cdf358ff279c568d8e4b741dac9f0d003f0e3c2e63776e00058f8080d1ac67b0",
+      "bytes": 95,
+      "kind": "text",
+      "line_count": 3,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/custom-actions/user-interaction.ts",
+      "sha256": "5672d8150c9345ac3a3071d486d0b53648e62d9fc0b77251488c56e1c2b0fba9",
+      "bytes": 2246,
+      "kind": "text",
+      "line_count": 66,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/debug/AGENTS.md",
+      "sha256": "01ffe50c9b158d70496d02e61cd9b31057d2a926629c577b8cd8f60557801b19",
+      "bytes": 585,
+      "kind": "text",
+      "line_count": 14,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/debug/options.ts",
+      "sha256": "53a87b054d87d952d5af9bdb9de0e7725760d6f9fbd2036d4607f3e54bc024ba",
+      "bytes": 566,
+      "kind": "text",
+      "line_count": 21,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            1,
+            8,
+            12,
+            19
+          ],
+          "occurrences": 4
+        }
+      }
+    },
+    {
+      "path": "src/index.ts",
+      "sha256": "2c371b1122895a2fa3a126984932a888c43cc5d246521b83698484411708905d",
+      "bytes": 393,
+      "kind": "text",
+      "line_count": 13,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            1,
+            4,
+            5,
+            9,
+            10,
+            12
+          ],
+          "occurrences": 7
+        }
+      }
+    },
+    {
+      "path": "src/llm/AGENTS.md",
+      "sha256": "469a594dbba63cd51dbf5722b6677477397d4593e0222023eeb7fc353e10f9dd",
+      "bytes": 677,
+      "kind": "text",
+      "line_count": 15,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            8
+          ],
+          "occurrences": 1
+        }
+      }
+    },
+    {
+      "path": "src/llm/providers/anthropic.ts",
+      "sha256": "acf72a2ccdc176f130cc7db75d776152de5a6e4490c49ad2ee1652f48b8a09ba",
+      "bytes": 8328,
+      "kind": "text",
+      "line_count": 290,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            5,
+            6,
+            7,
+            20,
+            21,
+            38,
+            54,
+            95,
+            96,
+            125,
+            137,
+            240
+          ],
+          "occurrences": 13
+        }
+      }
+    },
+    {
+      "path": "src/llm/providers/deepseek.ts",
+      "sha256": "61ebf91e5ccc648f4fe9515c0622d81b56ec0d1164d6a79d18721d82c15586fc",
+      "bytes": 4196,
+      "kind": "text",
+      "line_count": 151,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            23,
+            47,
+            56,
+            57,
+            60,
+            111,
+            112
+          ],
+          "occurrences": 13
+        }
+      }
+    },
+    {
+      "path": "src/llm/providers/gemini.ts",
+      "sha256": "62769f8b17f666008499228bb40eff595f2ef05e244596b891d1cbd42979b041",
+      "bytes": 3518,
+      "kind": "text",
+      "line_count": 134,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            5,
+            6,
+            7,
+            20,
+            39,
+            75,
+            76,
+            123
+          ],
+          "occurrences": 9
+        }
+      }
+    },
+    {
+      "path": "src/llm/providers/index.ts",
+      "sha256": "d68af20005ed54462add6a02847bd0d0028439495ff69c56d5e5072a9ef3e7c1",
+      "bytes": 2128,
+      "kind": "text",
+      "line_count": 70,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            1,
+            18,
+            66
+          ],
+          "occurrences": 3
+        }
+      }
+    },
+    {
+      "path": "src/llm/providers/openai.ts",
+      "sha256": "eb1e0af2e947e47e84522df94697339c0c71e54353dff42d94f71e7b32dc9137",
+      "bytes": 6560,
+      "kind": "text",
+      "line_count": 227,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            5,
+            6,
+            7,
+            9,
+            16,
+            17,
+            36,
+            40,
+            71,
+            88,
+            96,
+            152,
+            153,
+            216
+          ],
+          "occurrences": 15
+        }
+      }
+    },
+    {
+      "path": "src/llm/types.ts",
+      "sha256": "038fd906a71c1ff479688dc208e65a961c3c82044c4ae41d0ea94240161328e5",
+      "bytes": 2407,
+      "kind": "text",
+      "line_count": 95,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            4,
+            6,
+            11,
+            19,
+            25,
+            26,
+            27,
+            28,
+            30,
+            32,
+            33,
+            36,
+            37,
+            44,
+            47,
+            53,
+            67,
+            71,
+            76,
+            78,
+            79,
+            82,
+            89,
+            90,
+            94
+          ],
+          "occurrences": 25
+        }
+      }
+    },
+    {
+      "path": "src/llm/utils/message-converter.ts",
+      "sha256": "2aae5e3c1bc5987b40e9d96e8bca239e58b4fd3ef0e3f1d2ff26791588646ec6",
+      "bytes": 5093,
+      "kind": "text",
+      "line_count": 184,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            1,
+            13,
+            22,
+            61,
+            130,
+            147
+          ],
+          "occurrences": 7
+        }
+      }
+    },
+    {
+      "path": "src/llm/utils/schema-converter.ts",
+      "sha256": "3296138d027a6f17dd526d4bac25976cabf2d28fb348e65c12bcf0f600ccfebe",
+      "bytes": 6788,
+      "kind": "text",
+      "line_count": 230,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/types/AGENTS.md",
+      "sha256": "2dcf68ffcd4dcaa2730737ac603de8247cf8d0c480a61e64b795a5e94a4ddac0",
+      "bytes": 557,
+      "kind": "text",
+      "line_count": 15,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/types/agent/actions/types.ts",
+      "sha256": "0ca0628145de7e9c74ab77fed89b4c06a75011a1ef33fa5458da28a3fb342f9d",
+      "bytes": 1702,
+      "kind": "text",
+      "line_count": 59,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            3,
+            12
+          ],
+          "occurrences": 2
+        },
+        "hyperpage_or_variable": {
+          "lines": [
+            6,
+            14
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "src/types/agent/types.ts",
+      "sha256": "28d0a24e1fa84ce5f0ba392272ad62fbcbf7f7d48302733c831068582f82ae40",
+      "bytes": 6708,
+      "kind": "text",
+      "line_count": 245,
+      "brand_matches": {
+        "hyperpage_or_variable": {
+          "lines": [
+            163,
+            170,
+            178
+          ],
+          "occurrences": 3
+        }
+      }
+    },
+    {
+      "path": "src/types/browser-providers/types.ts",
+      "sha256": "9e00414011507054f21ad7f5072477bec34c45e1487c9db5ad81bd999dc857a3",
+      "bytes": 252,
+      "kind": "text",
+      "line_count": 10,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/types/config.ts",
+      "sha256": "9c32c95a8e532b0669c7f69cbd3db94afde77683406869a11459a1347e1ef608",
+      "bytes": 2467,
+      "kind": "text",
+      "line_count": 103,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            2,
+            70,
+            75,
+            82,
+            85
+          ],
+          "occurrences": 5
+        },
+        "hyperbrowser": {
+          "lines": [
+            5,
+            58,
+            87,
+            88
+          ],
+          "occurrences": 4
+        }
+      }
+    },
+    {
+      "path": "src/types/index.ts",
+      "sha256": "b0184cf8a7e78c3b6571103e4cb5cbfda27d364eb1f9c2607c5c122478fba2bf",
+      "bytes": 1504,
+      "kind": "text",
+      "line_count": 80,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            30,
+            63
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "src/utils/AGENTS.md",
+      "sha256": "f8ae68710fa6209bc6e8aa63f5f63c9b569eb5d87f68e4cb0c69966e46fada18",
+      "bytes": 621,
+      "kind": "text",
+      "line_count": 14,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/utils/debugWriter.ts",
+      "sha256": "759370ded5a4c4fec2a02ae42cb848bd18a18f10fab176c6d455288d0fa569a0",
+      "bytes": 5161,
+      "kind": "text",
+      "line_count": 195,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/utils/error-emitter.ts",
+      "sha256": "f08b1a4b3bfe4c2f12b0e1894a84e9d927d7fc07242797187ed28307b9f6e213",
+      "bytes": 934,
+      "kind": "text",
+      "line_count": 42,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/utils/html-to-markdown.ts",
+      "sha256": "26b4ed75df6323344cb93efcdb356ed7a3fd30affeca93ec502b1fd9db4f41ca",
+      "bytes": 2199,
+      "kind": "text",
+      "line_count": 77,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/utils/index.ts",
+      "sha256": "85f6bec8feb5e9da7db19875aa1b8ae5954c277f8d65fc5798748b4449c510d2",
+      "bytes": 154,
+      "kind": "text",
+      "line_count": 5,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/utils/retry.ts",
+      "sha256": "63b476614e61bb2178b268960f0b323f16b123e0d0756a064df23b89044cc583",
+      "bytes": 550,
+      "kind": "text",
+      "line_count": 25,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/utils/sleep.ts",
+      "sha256": "1044e7b30a2590389e7b980eff5cb73df44c79b83f187698aa58717347070ed0",
+      "bytes": 117,
+      "kind": "text",
+      "line_count": 3,
+      "brand_matches": {}
+    },
+    {
+      "path": "src/utils/waitForSettledDOM.ts",
+      "sha256": "0d0830db3274a183adccd2826aa8f6ef90ae07c6d21a7b93c839471452016a77",
+      "bytes": 7078,
+      "kind": "text",
+      "line_count": 236,
+      "brand_matches": {
+        "hyperagent": {
+          "lines": [
+            28,
+            29
+          ],
+          "occurrences": 2
+        }
+      }
+    },
+    {
+      "path": "test-prototype-pollution.js",
+      "sha256": "1161ad2db77ee267a24cf55dc5489aa199634d6f0fa7ea771dd95ffda9710d11",
+      "bytes": 3413,
+      "kind": "text",
+      "line_count": 73,
+      "brand_matches": {}
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "962475022c757f641762e10e10eb159b842cd2b6fcf207a5ed68bcf6d25bb942",
+      "bytes": 921,
+      "kind": "text",
+      "line_count": 47,
+      "brand_matches": {
+        "hyperbrowser": {
+          "lines": [
+            13,
+            16,
+            19,
+            22,
+            25
+          ],
+          "occurrences": 5
+        },
+        "old_package": {
+          "lines": [
+            13,
+            16,
+            19,
+            22,
+            25
+          ],
+          "occurrences": 5
+        }
+      }
+    },
+    {
+      "path": "yarn.lock",
+      "sha256": "ad5ba47e84d1da23b851d64c664a6bf8a1fddc920a6a2073e96a2de2e432a49a",
+      "bytes": 151571,
+      "kind": "text",
+      "line_count": 3310,
+      "brand_matches": {
+        "hyperbrowser": {
+          "lines": [
+            253,
+            255
+          ],
+          "occurrences": 2
+        }
+      }
+    }
+  ]
+}

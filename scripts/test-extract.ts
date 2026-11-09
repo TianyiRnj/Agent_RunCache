@@ -1,10 +1,10 @@
 import { z } from "zod";
-import { HyperAgent } from "../src/agent";
+import { AgentRunCache } from "agent-run-cache";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-const agent = new HyperAgent();
+const agent = new AgentRunCache();
 
 (async () => {
   const page = await agent.newPage();

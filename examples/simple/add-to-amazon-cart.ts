@@ -1,7 +1,7 @@
 /**
  * # Simple Amazon Cart Example
  * 
- * This example demonstrates how to use HyperAgent to automate a basic
+ * This example demonstrates how to use Agent Run Cache to automate a basic
  * e-commerce task on Amazon.com.
  * 
  * ## What This Example Does
@@ -24,13 +24,13 @@
  */
 
 import "dotenv/config";
-import { HyperAgent } from "@hyperbrowser/agent";
+import { AgentRunCache } from "agent-run-cache";
 import chalk from "chalk";
 
 async function runEval() {
   console.log(chalk.cyan.bold("\n===== Running Add to amazon Example ====="));
 
-  const agent = new HyperAgent({
+  const agent = new AgentRunCache({
     llm: {
       provider: "openai",
       model: "gpt-4o",

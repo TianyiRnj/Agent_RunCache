@@ -122,9 +122,11 @@ ${indent});`;
 
   const stepSnippets = steps.map((step) => formatCall(step)).join("\n\n");
 
-  const script = `import { HyperAgent } from "@hyperbrowser/agent";
+  // Interpolated so tsc-alias does not rewrite this specifier to a relative path in dist.
+  const packageName = "agent-run-cache";
+  const script = `import { AgentRunCache } from "${packageName}";
 async function main() {
-  const agent = new HyperAgent({
+  const agent = new AgentRunCache({
     // Configure your LLM/API keys
   });
 

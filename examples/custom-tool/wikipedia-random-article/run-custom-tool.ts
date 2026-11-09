@@ -1,7 +1,7 @@
 /**
  * # Custom Wikipedia Random Article Tool Example
  * 
- * This example demonstrates how to create a simple custom tool for HyperAgent
+ * This example demonstrates how to create a simple custom tool for Agent Run Cache
  * that navigates to random Wikipedia articles and extracts their content.
  * 
  * ## What This Example Does
@@ -24,12 +24,12 @@
  */
 
 import "dotenv/config";
-import { HyperAgent } from "@hyperbrowser/agent";
+import { AgentRunCache } from "agent-run-cache";
 import {
   AgentActionDefinition,
   ActionContext,
   ActionOutput,
-} from "@hyperbrowser/agent/types";
+} from "agent-run-cache/types";
 import chalk from "chalk";
 // Removed LangChain import - using native SDK configuration
 
@@ -59,7 +59,7 @@ export const GoToWikipediaActionDefinition: AgentActionDefinition = {
 async function runEval() {
   console.log(chalk.cyan.bold("\n===== Running Custom Tool Example ====="));
 
-  const agent = new HyperAgent({
+  const agent = new AgentRunCache({
     llm: {
       provider: "openai",
       model: "gpt-4o",

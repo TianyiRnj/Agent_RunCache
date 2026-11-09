@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Project Is
 
-HyperAgent (`@hyperbrowser/agent`) is a TypeScript browser automation SDK that augments Playwright with LLM-powered agents. It exposes three core APIs on `HyperPage`: `page.ai()` for multi-step tasks with screenshots, `page.perform()` for single granular actions (text-only, no screenshots), and `page.extract()` for structured data extraction with Zod schemas. Supports OpenAI, Anthropic, Gemini, and DeepSeek as LLM providers, plus local and cloud (Hyperbrowser) browser backends.
+Agent Run Cache (local package name `agent-run-cache`, distributed as GitHub source) is a TypeScript browser automation SDK that augments Playwright with LLM-powered agents. It exposes three core APIs on `HyperPage`: `page.ai()` for multi-step tasks with screenshots, `page.perform()` for single granular actions (text-only, no screenshots), and `page.extract()` for structured data extraction with Zod schemas. Supports OpenAI, Anthropic, Gemini, and DeepSeek as LLM providers, plus local and cloud (Hyperbrowser) browser backends.
 
 ## Build & Development Commands
 
@@ -25,7 +25,7 @@ Integration/smoke tests live in `scripts/` (e.g., `test-page-ai.ts`, `test-async
 
 ### Entry Point & Core Loop
 
-- `src/index.ts` — Package entry, exports `HyperAgent` and `TaskStatus`
+- `src/index.ts` — Package entry, exports `AgentRunCache` (alias of the internal `HyperAgent` class), `HyperAgent`, and `TaskStatus`
 - `src/agent/index.ts` — `HyperAgent` class: orchestrates browser sessions, LLM providers, MCP clients, custom actions, and task execution
 - `src/agent/tools/agent.ts` — `runAgentTask()`: the core agent loop — captures DOM state, builds LLM messages, invokes LLM, executes actions, repeats until completion or max steps
 
@@ -59,7 +59,7 @@ Integration/smoke tests live in `scripts/` (e.g., `test-page-ai.ts`, `test-async
 
 Configured in `tsconfig.json`:
 - `@/*` → `./src/*` (use this for internal imports instead of relative paths)
-- `@hyperbrowser/agent` → `./src/index`
+- `agent-run-cache` → `./src/index`, with subpaths `/types`, `/custom-actions`, `/actions`, `/utils`, and `/llm/providers`
 
 ## Environment Variables
 
@@ -70,9 +70,11 @@ Configured in `tsconfig.json`:
 | `GEMINI_API_KEY` / `GOOGLE_API_KEY` | Gemini provider; also enables PDF action |
 | `DEEPSEEK_API_KEY` | DeepSeek provider |
 | `HYPERBROWSER_API_KEY` | Cloud browser provider |
-| `HYPERAGENT_TRACE_WAIT` | Enable DOM settle tracing (`"1"`) |
-| `HYPERAGENT_PROFILE_DOM` | Enable DOM capture profiling (`"1"`) |
-| `HYPERAGENT_DEBUG_STRUCTURED_SCHEMA` | Log structured LLM schemas (`"1"`) |
+| `AGENT_RUN_CACHE_TRACE_WAIT` | Enable DOM settle tracing (`"1"` or `"true"`) |
+| `AGENT_RUN_CACHE_PROFILE_DOM` | Enable DOM capture profiling (`"1"`) |
+| `AGENT_RUN_CACHE_DEBUG_STRUCTURED_SCHEMA` | Log structured LLM schemas (`"1"` or `"true"`) |
+
+A non-empty `AGENT_RUN_CACHE_*` debug value takes precedence. When it is unset or empty, the matching legacy `HYPERAGENT_*` variable applies.
 
 ## Code Conventions
 

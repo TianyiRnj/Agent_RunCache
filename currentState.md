@@ -1,7 +1,7 @@
-# HyperAgent Current State Analysis
+# Agent Run Cache Current State Analysis
 
 ## Overview
-HyperAgent is a browser automation SDK that uses LLM-powered agents to execute tasks on web pages. It provides both imperative page methods (`page.ai()`, `page.extract()`) and a programmatic task execution API.
+Agent Run Cache is a browser automation SDK that uses LLM-powered agents to execute tasks on web pages. It provides both imperative page methods (`page.ai()`, `page.extract()`) and a programmatic task execution API. `HyperAgent` and the related names below are internal symbols; the public alias for the main class is `AgentRunCache`.
 
 ---
 

@@ -1,7 +1,7 @@
 /**
  * # Custom Search Tool Example with Exa
  *
- * This example demonstrates how to create and use a custom search tool with HyperAgent
+ * This example demonstrates how to create and use a custom search tool with Agent Run Cache
  * using the Exa search API to perform web searches and process the results.
  *
  * ## What This Example Does
@@ -42,12 +42,12 @@
  */
 
 import "dotenv/config";
-import HyperAgent from "@hyperbrowser/agent";
+import AgentRunCache from "agent-run-cache";
 import {
   AgentActionDefinition,
   ActionContext,
   ActionOutput,
-} from "@hyperbrowser/agent/types";
+} from "agent-run-cache/types";
 import chalk from "chalk";
 // Removed LangChain import - using native SDK configuration
 import Exa from "exa-js";
@@ -90,7 +90,7 @@ export const RunSearchActionDefinition: AgentActionDefinition = {
 async function runEval() {
   console.log(chalk.cyan.bold("\n===== Running Custom Tool Example ====="));
 
-  const agent = new HyperAgent({
+  const agent = new AgentRunCache({
     llm: {
       provider: "openai",
       model: "gpt-4o",

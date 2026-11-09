@@ -19,6 +19,11 @@
 - Apply root guidance everywhere, then apply the nearest directory `AGENTS.md` for local constraints.
 - Subdirectory files are additive and should refine local implementation details without contradicting root policy.
 
+## Branding and Compatibility
+- The public project name is Agent Run Cache, and `agent-run-cache` is the local package name. The project is distributed as GitHub source.
+- Keep these internal names for compatibility: `HyperAgent` (exported alias `AgentRunCache`), `HyperAgentConfig` (exported alias `AgentRunCacheConfig`), `HyperPage`, `HyperVariable`, `HyperagentError`, the injected `__hyperagent_*` browser functions, the MCP client name `hyperagent-mcp-client-*`, and the legacy `HYPERAGENT_*` debug variable fallback.
+- `Hyperbrowser` names (`HyperbrowserProvider`, `--hyperbrowser`, `HYPERBROWSER_API_KEY`, `@hyperbrowser/sdk`) refer to the real third-party service and must stay.
+
 ## Build, Test, and Development Commands
 - `yarn build` wipes `dist/`, runs `tsc` + `tsc-alias`, and restores executable bits on `dist/cli/index.js` and `cli.sh`; run before publishing or cutting releases.
 - `yarn lint` / `yarn format` use the flat ESLint config (`eslint.config.mjs`) and Prettier over `src/**/*.ts`; fix warnings instead of suppressing rules.

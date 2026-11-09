@@ -1,7 +1,7 @@
 /**
  * # Output Schema Example
  *
- * This example demonstrates how to use HyperAgent with a defined output schema
+ * This example demonstrates how to use Agent Run Cache with a defined output schema
  * to ensure structured and validated responses from the agent.
  *
  * ## What This Example Does
@@ -24,7 +24,7 @@
  */
 
 import "dotenv/config";
-import { HyperAgent } from "@hyperbrowser/agent";
+import { AgentRunCache } from "agent-run-cache";
 
 import chalk from "chalk";
 import { sleep } from "../../src/utils/sleep";
@@ -35,7 +35,7 @@ const TASK =
   "Navigate to imdb.com, search for 'The Matrix', and extract the director, release year, and rating";
 
 async function runEval() {
-  const agent = new HyperAgent({
+  const agent = new AgentRunCache({
     llm: {
       provider: "openai",
       model: "gpt-4o",

@@ -1,66 +1,39 @@
 <div align="center">
-  <img src="assets/hyperagent-banner.png" alt="Hyperagent Banner" width="800"/>
+  <h1>Agent Run Cache</h1>
 
   <p align="center">
     <strong>Intelligent Browser Automation with LLMs</strong>
-  </p>
-
-  <p align="center">
-    <a href="https://www.npmjs.com/package/@hyperbrowser/agent">
-      <img src="https://img.shields.io/npm/v/@hyperbrowser/agent?style=flat-square" alt="npm version" />
-    </a>
-    <a href="https://github.com/hyperbrowserai/hyperagent/blob/main/LICENSE">
-      <img src="https://img.shields.io/npm/l/@hyperbrowser/agent?style=flat-square" alt="license" />
-    </a>
-    <a href="https://discord.gg/zsYzsgVRjh" style="text-decoration:none;">
-      <img alt="Discord" src="https://img.shields.io/discord/1313014141165764619?style=flat-square&color=blue">
-    </a>
-    <a href="https://x.com/AkshayShekhaw12">
-      <img alt="X (formerly Twitter) Follow" src="https://img.shields.io/twitter/follow/AkshayShekhaw12?style=social">
-    </a>
   </p>
 </div>
 
 ## Overview
 
-Hyperagent is Playwright supercharged with AI. No more brittle scripts, just powerful natural language commands.
-Just looking for scalable headless browsers or scraping infra? Go to [Hyperbrowser](https://app.hyperbrowser.ai/) to get started for free!
+Agent Run Cache is Playwright supercharged with AI. No more brittle scripts, just powerful natural language commands.
 
-View HyperAgent docs here: https://www.hyperbrowser.ai/docs/hyperagent/introduction
+Agent Run Cache is distributed as source code from this GitHub repository and runs on your own machine. See [License and Attribution](#license-and-attribution) for its upstream origin.
 
 ### Features
 
 - 🤖 **AI Commands**: Simple APIs like `page.ai()`, `page.extract()` and `executeTask()` for any AI automation
 - ⚡ **Fallback to Regular Playwright**: Use regular Playwright when AI isn't needed
 - 🥷 **Stealth Mode** – Avoid detection with built-in anti-bot patches
-- ☁️ **Cloud Ready** – Instantly scale to hundreds of sessions via [Hyperbrowser](https://app.hyperbrowser.ai/)
+- ☁️ **Cloud Ready** – Optionally run sessions on remote browsers through the Hyperbrowser provider
 - 🔌 **MCP Client** – Connect to tools like Composio for full workflows (e.g. writing web data to Google Sheets)
 - 📼 **Action Caching** – Record and replay workflows deterministically without LLM calls
 
 ## Quick Start
 
-### Installation
+### Install from Source
+
+Download or clone this repository, install its dependencies, build it, configure
+your environment, and run it locally:
 
 ```bash
-# Using npm
-npm install @hyperbrowser/agent
-
-# Using yarn
-yarn add @hyperbrowser/agent
-```
-
-### Local Source Development
-
-If you cloned this repository to develop HyperAgent itself, this repository is
-already the `@hyperbrowser/agent` package. Do not install the published package
-with `npm`, `pnpm`, or `yarn add`, because doing so would add a second copy of
-HyperAgent instead of using your local source.
-
-Install this repository's third-party dependencies, build the local package,
-and run the CLI from the repository root:
-
-```bash
+# Download the source.
+git clone https://github.com/TianyiRnj/Agent_RunCache.git
 cd Agent_RunCache
+
+# Install dependencies and build.
 yarn install --frozen-lockfile
 yarn build
 
@@ -69,7 +42,7 @@ cp .env.example .env
 
 # Open .env and set OPENAI_API_KEY and OPENAI_MODEL. The CLI loads them automatically.
 
-# Run the local HyperAgent source.
+# Run Agent Run Cache from the local source.
 yarn cli -c "Open example.com and return the page title"
 ```
 
@@ -83,11 +56,14 @@ OPENAI_API_KEY=your-api-key
 The repository ignores `.env`, so local secrets are not committed. Keep
 `.env.example` as the shareable list of supported variables. After configuring
 `.env` once, subsequent commands do not require `export OPENAI_API_KEY=...`.
-`OPENAI_MODEL` controls the model used by the CLI and by `new HyperAgent()` when
+`OPENAI_MODEL` controls the model used by the CLI and by `new AgentRunCache()` when
 no explicit `llm` configuration is supplied; it defaults to `gpt-4o` when unset.
 
-Local examples also resolve `@hyperbrowser/agent` to `src/index.ts` through the
-repository's TypeScript path configuration:
+The code samples in this README, the files in [`examples/`](examples/), and
+generated replay scripts run under this repository's development configuration.
+`agent-run-cache` is the local package name and resolves to `src/index.ts`
+through the repository's TypeScript path configuration, so these files are not
+expected to work outside a checkout of this repository:
 
 ```bash
 yarn example examples/simple/add-to-amazon-cart.ts
@@ -98,7 +74,7 @@ yarn example examples/simple/login-to-saucedemo.ts
 
 #### Run in an isolated Node environment
 
-HyperAgent is a Node.js/TypeScript project, so a Python `venv` does not isolate
+Agent Run Cache is a Node.js/TypeScript project, so a Python `venv` does not isolate
 its runtime or dependencies. Use a Node version manager such as `nvm`; project
 dependencies will remain isolated in this repository's `node_modules` directory.
 
@@ -129,12 +105,8 @@ yarn install --offline --frozen-lockfile
 ### CLI
 
 ```bash
-$ npx @hyperbrowser/agent -c "Find a route from Miami to New Orleans, and provide the detailed route information."
+yarn cli -c "Find a route from Miami to New Orleans, and provide the detailed route information."
 ```
-
-<p align="center">
-  <img src="assets/flight-schedule.gif" alt="Hyperagent Demo"/>
-</p>
 
 The CLI supports options for debugging or using hyperbrowser instead of a local browser
 
@@ -147,11 +119,11 @@ The CLI supports options for debugging or using hyperbrowser instead of a local 
 ### Library
 
 ```typescript
-import { HyperAgent } from "@hyperbrowser/agent";
+import { AgentRunCache } from "agent-run-cache";
 import { z } from "zod";
 
 // Initialize the agent
-const agent = new HyperAgent({
+const agent = new AgentRunCache({
   llm: {
     provider: "openai",
     model: "gpt-4o",
@@ -189,7 +161,7 @@ await agent.closeAgent();
 
 ## Two Modes of Operation
 
-HyperAgent provides two complementary APIs optimized for different use cases:
+Agent Run Cache provides two complementary APIs optimized for different use cases:
 
 ### 🎯 `page.perform()` - Single Granular Actions
 
@@ -265,14 +237,14 @@ const products = await page.extract(
 
 ## ☁️ Cloud
 
-You can scale HyperAgent with cloud headless browsers using Hyperbrowser
+You can scale Agent Run Cache with cloud headless browsers using Hyperbrowser
 
 1. Get a free api key from [Hyperbrowser](https://app.hyperbrowser.ai/)
 2. Add it to your env as `HYPERBROWSER_API_KEY`
 3. Set your `browserProvider` to `"Hyperbrowser"`
 
 ```typescript
-const agent = new HyperAgent({
+const agent = new AgentRunCache({
   browserProvider: "Hyperbrowser",
 });
 
@@ -312,12 +284,12 @@ await agent.closeAgent();
 
 ### Output Schema Definition
 
-HyperAgent can extract data in a specified schema. The schema can be passed in at a per-task level
+Agent Run Cache can extract data in a specified schema. The schema can be passed in at a per-task level
 
 ```typescript
 import { z } from "zod";
 
-const agent = new HyperAgent();
+const agent = new AgentRunCache();
 const agentResponse = await agent.executeTask(
   "Navigate to imdb.com, search for 'The Matrix', and extract the director, release year, and rating",
   {
@@ -342,11 +314,11 @@ await agent.closeAgent();
 
 ### Using Different LLM Providers
 
-Hyperagent supports multiple LLM providers with native SDKs for better performance and reliability.
+Agent Run Cache supports multiple LLM providers with native SDKs for better performance and reliability.
 
 ```typescript
 // Using OpenAI
-const agent = new HyperAgent({
+const agent = new AgentRunCache({
   llm: {
     provider: "openai",
     model: "gpt-4o",
@@ -354,7 +326,7 @@ const agent = new HyperAgent({
 });
 
 // Using Anthropic's Claude
-const agent = new HyperAgent({
+const agent = new AgentRunCache({
   llm: {
     provider: "anthropic",
     model: "claude-sonnet-4-0",
@@ -362,7 +334,7 @@ const agent = new HyperAgent({
 });
 
 // Using Google Gemini
-const agent = new HyperAgent({
+const agent = new AgentRunCache({
   llm: {
     provider: "gemini",
     model: "gemini-2.5-flash",
@@ -370,7 +342,7 @@ const agent = new HyperAgent({
 });
 
 // Using DeepSeek
-const agent = new HyperAgent({
+const agent = new AgentRunCache({
   llm: {
     provider: "deepseek",
     model: "deepseek-chat",
@@ -380,13 +352,13 @@ const agent = new HyperAgent({
 
 ### MCP Support
 
-HyperAgent functions as a fully functional MCP client. For best results, we recommend using
+Agent Run Cache functions as a fully functional MCP client. For best results, we recommend using
 `gpt-4o` as your LLM.
 
-Here is an example which reads from wikipedia, and inserts information into a google sheet using the composio Google Sheet MCP. For the full example, see [here](https://github.com/hyperbrowserai/HyperAgent/tree/main/examples/mcp/google-sheets/most-populated-states.ts)
+Here is an example which reads from wikipedia, and inserts information into a google sheet using the composio Google Sheet MCP. For the full example, see [here](examples/mcp/google-sheets/most-populated-states.ts)
 
 ```typescript
-const agent = new HyperAgent({
+const agent = new AgentRunCache({
   llm: llm,
   debug: true,
 });
@@ -418,7 +390,7 @@ await agent.closeAgent();
 
 ### Custom Actions
 
-HyperAgent's capabilities can be extended with custom actions. Custom actions require 3 things:
+Agent Run Cache's capabilities can be extended with custom actions. Custom actions require 3 things:
 
 - type: Name of the action. Should be something descriptive about the action.
 - actionParams: A zod object describing the parameters that the action may consume.
@@ -456,7 +428,7 @@ export const RunSearchActionDefinition: AgentActionDefinition = {
   },
 };
 
-const agent = new HyperAgent({
+const agent = new AgentRunCache({
   customActions: [RunSearchActionDefinition],
 });
 
@@ -467,7 +439,7 @@ const result = await agent.executeTask(
 
 ## 📼 Action Caching
 
-HyperAgent automatically records every action during `page.ai()` runs, capturing XPaths, frame indices, and execution details. This enables deterministic replay without LLM calls—perfect for regression testing, CI pipelines, and cost optimization.
+Agent Run Cache automatically records every action during `page.ai()` runs, capturing XPaths, frame indices, and execution details. This enables deterministic replay without LLM calls—perfect for regression testing, CI pipelines, and cost optimization.
 
 ### How It Works
 
@@ -510,7 +482,8 @@ Example cache entry:
 Replay a recorded session using `runFromActionCache()`. It attempts XPath-based execution first (no LLM calls), falling back to LLM only if the page structure has changed:
 
 ```typescript
-import { ActionCacheOutput } from "@hyperbrowser/agent";
+import { AgentRunCache } from "agent-run-cache";
+import { ActionCacheOutput } from "agent-run-cache/types";
 import fs from "fs";
 
 // Load a previously saved action cache
@@ -518,7 +491,7 @@ const cache: ActionCacheOutput = JSON.parse(
   fs.readFileSync("action-cache.json", "utf-8")
 );
 
-const agent = new HyperAgent();
+const agent = new AgentRunCache();
 const page = await agent.newPage();
 
 // Replay the cached actions
@@ -540,7 +513,7 @@ await agent.closeAgent();
 
 ### Generating Replay Scripts
 
-Generate a standalone TypeScript script from an action cache for easy integration into your test suite:
+Generate a TypeScript script from an action cache for easy integration into your test suite:
 
 ```typescript
 const { actionCache } = await page.ai("search for flights from Miami to NYC");
@@ -550,7 +523,7 @@ const script = agent.createScriptFromActionCache(actionCache.steps);
 console.log(script);
 ```
 
-This produces a script using typed helper methods like `performClick()`, `performType()`, etc., that can be run independently.
+This produces a script using typed helper methods like `performClick()`, `performType()`, etc. The script imports from `agent-run-cache`, so run it from inside this repository with `yarn example <path>`.
 
 ### Use Cases
 
@@ -561,9 +534,9 @@ This produces a script using typed helper methods like `performClick()`, `perfor
 
 ## CDP First
 
-HyperAgent speaks Chrome DevTools Protocol natively. Element lookup, scrolling, typing, frame management, and screenshots all go through CDP so every action has exact coordinates, execution contexts, and browser events. This allows for more custom commands and deep iframe tracking.
+Agent Run Cache speaks Chrome DevTools Protocol natively. Element lookup, scrolling, typing, frame management, and screenshots all go through CDP so every action has exact coordinates, execution contexts, and browser events. This allows for more custom commands and deep iframe tracking.
 
-HyperAgent integrates seamlessly with Playwright, so you can still use familiar commands, while the actions take full advantage of native CDP protocol with fast locators and advanced iframe tracking.
+Agent Run Cache integrates seamlessly with Playwright, so you can still use familiar commands, while the actions take full advantage of native CDP protocol with fast locators and advanced iframe tracking.
 
 **Key Features:**
 
@@ -577,7 +550,7 @@ The CDP layer is still evolving—expect rapid polish (and the occasional sharp 
 
 ## Contributing
 
-We welcome contributions to Hyperagent! Here's how you can help:
+We welcome contributions to Agent Run Cache! Here's how you can help:
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -587,7 +560,10 @@ We welcome contributions to Hyperagent! Here's how you can help:
 
 ## Support
 
-- 📚 [Documentation](https://docs.hyperbrowser.ai/hyperagent/introduction)
-- 💬 [Discord Community](https://discord.gg/zsYzsgVRjh)
-- 🐛 [Issue Tracker](https://github.com/hyperbrowserai/HyperAgent/issues)
-- 📧 [Email Support](mailto:info@hyperbrowser.ai)
+- 📚 [CDP Architecture Notes](docs/cdp-overview.md)
+- 🧪 [Examples](examples/)
+- 🐛 [Issue Tracker](https://github.com/TianyiRnj/Agent_RunCache/issues)
+
+## License and Attribution
+
+Agent Run Cache is a modified version of [HyperAgent](https://github.com/hyperbrowserai/HyperAgent), Copyright (c) 2025 S2 Labs Inc., and is distributed under the GNU Affero General Public License, version 3. See [LICENSE](LICENSE) for the upstream notice, a description of the modifications, and the full license text.

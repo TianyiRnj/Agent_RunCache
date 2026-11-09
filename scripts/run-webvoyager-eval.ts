@@ -1,4 +1,4 @@
-import { HyperAgent } from "../src/agent";
+import { AgentRunCache } from "agent-run-cache";
 import { createLLMClient } from "../src/llm/providers";
 import dotenv from "dotenv";
 import chalk from "chalk";
@@ -184,7 +184,7 @@ Respond in JSON format with { isCorrect: true | false, reason: string }`,
 }
 
 async function runEvalHelper(
-  agent: HyperAgent,
+  agent: AgentRunCache,
   eval_data: WebVoyagerEval,
   references: References,
   logger: Logger,
@@ -296,7 +296,7 @@ const runEval = async (
   runId: string
 ): Promise<EvalResult> => {
   const logger = new Logger(runId, eval_data.id);
-  const agent = new HyperAgent({
+  const agent = new AgentRunCache({
     llm: {
       provider: "openai",
       model: "gpt-4o",

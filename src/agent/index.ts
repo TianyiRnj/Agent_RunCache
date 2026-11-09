@@ -275,7 +275,7 @@ export class HyperAgent<T extends BrowserProviders = "Local"> {
    */
   public async closeAgent(): Promise<void> {
     await disposeAllCDPClients().catch((error) => {
-      console.warn("[HyperAgent] Failed to dispose CDP clients:", error);
+      console.warn("[Agent Run Cache]Failed to dispose CDP clients:", error);
     });
     for (const taskId in this.tasks) {
       const task = this.tasks[taskId];
@@ -319,7 +319,7 @@ export class HyperAgent<T extends BrowserProviders = "Local"> {
       if (lastPage && !lastPage.isClosed() && lastPage !== this._currentPage) {
         if (this.debug) {
           console.log(
-            `[HyperAgent] Polling detected new page, switching focus: ${lastPage.url()}`
+            `[Agent Run Cache]Polling detected new page, switching focus: ${lastPage.url()}`
           );
         }
         this._currentPage = lastPage;
@@ -391,7 +391,7 @@ export class HyperAgent<T extends BrowserProviders = "Local"> {
         if (opener === activeTaskPage) {
           if (this.debug) {
             console.log(
-              `[HyperAgent] Task following new tab: ${newPage.url()}`
+              `[Agent Run Cache]Task following new tab: ${newPage.url()}`
             );
           }
           activeTaskPage = newPage;
@@ -471,7 +471,7 @@ export class HyperAgent<T extends BrowserProviders = "Local"> {
         if (opener === activeTaskPage) {
           if (this.debug) {
             console.log(
-              `[HyperAgent] Task following new tab: ${newPage.url()}`
+              `[Agent Run Cache]Task following new tab: ${newPage.url()}`
             );
           }
           activeTaskPage = newPage;

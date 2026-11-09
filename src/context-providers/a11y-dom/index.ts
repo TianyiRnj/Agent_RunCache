@@ -32,7 +32,7 @@ import { getCDPClient, getOrCreateFrameContextManager } from "@/cdp";
 import type { CDPClient, CDPSession } from "@/cdp";
 import { domSnapshotCache } from "./dom-cache";
 import { PerformanceTracker } from "./performance";
-import { getDebugOptions } from "@/debug/options";
+import { getDebugOptions, readDebugEnv } from "@/debug/options";
 
 const DEFAULT_CONTEXT_COLLECTION_TIMEOUT_MS = 500;
 
@@ -916,7 +916,7 @@ export async function getA11yDOM(
   const profileDom =
     debug ||
     (debugOptions.enabled && debugOptions.profileDomCapture) ||
-    process.env.HYPERAGENT_PROFILE_DOM === "1" ||
+    readDebugEnv("PROFILE_DOM") === "1" ||
     !!debugDir;
   const tracker = profileDom ? new PerformanceTracker("getA11yDOM") : null;
   const timeAsync = async <T>(

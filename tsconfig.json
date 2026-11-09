@@ -10,20 +10,23 @@
     "declaration": true,
     "outDir": "./dist",
     "paths": {
-      "@hyperbrowser/agent": [
+      "agent-run-cache": [
         "./src/index"
       ],
-      "@hyperbrowser/agent/types": [
+      "agent-run-cache/types": [
         "./src/types/index"
       ],
-      "@hyperbrowser/agent/custom-actions": [
+      "agent-run-cache/custom-actions": [
         "./src/custom-actions/index"
       ],
-      "@hyperbrowser/agent/actions": [
+      "agent-run-cache/actions": [
         "./src/agent/actions/index"
       ],
-      "@hyperbrowser/agent/utils": [
+      "agent-run-cache/utils": [
         "./src/utils/index"
+      ],
+      "agent-run-cache/llm/providers": [
+        "./src/llm/providers/index"
       ],
       "@/*": [
         "./src/*"

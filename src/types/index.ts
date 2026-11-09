@@ -61,6 +61,7 @@ export {
   MCPServerConfig,
   MCPConfig,
   HyperAgentConfig,
+  HyperAgentConfig as AgentRunCacheConfig,
 
   // Browser Provider Types
   BrowserProvider,

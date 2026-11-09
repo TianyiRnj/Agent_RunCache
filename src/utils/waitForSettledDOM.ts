@@ -19,14 +19,13 @@ import { getCDPClient, getOrCreateFrameContextManager } from "@/cdp";
 import type { CDPSession } from "@/cdp";
 import { Protocol } from "devtools-protocol";
 import { performance } from "perf_hooks";
-import { getDebugOptions } from "@/debug/options";
+import { getDebugOptions, readDebugEnv } from "@/debug/options";
 
 const NETWORK_IDLE_THRESHOLD_MS = 500;
 const STALLED_REQUEST_MS = 2000;
 const STALLED_SWEEP_INTERVAL_MS = 500;
-const ENV_TRACE_WAIT =
-  process.env.HYPERAGENT_TRACE_WAIT === "1" ||
-  process.env.HYPERAGENT_TRACE_WAIT === "true";
+const TRACE_WAIT_VALUE = readDebugEnv("TRACE_WAIT");
+const ENV_TRACE_WAIT = TRACE_WAIT_VALUE === "1" || TRACE_WAIT_VALUE === "true";
 
 export interface LifecycleOptions {
   waitUntil?: Array<"domcontentloaded" | "load" | "networkidle">;

@@ -1,0 +1,738 @@
+{
+  "audit_date": "2026-11-08",
+  "audit_timezone": "America/New_York",
+  "baseline_commit": "4408ef5",
+  "baseline_file": "public-release-baseline.json",
+  "committed": false,
+  "local_package": "agent-run-cache",
+  "package_version": "1.1.2",
+  "distribution": "GitHub source only; no npm publication or cloud deployment",
+  "environment": {
+    "node": "v22.20.0",
+    "yarn": "1.22.22",
+    "browser": "Installed Google Chrome via LocalBrowserProvider"
+  },
+  "checks": [
+    {
+      "command": "yarn install --frozen-lockfile --offline --ignore-scripts --non-interactive",
+      "status": "passed",
+      "exit_code": 0,
+      "exit_code_before_change": 0
+    },
+    {
+      "command": "yarn build",
+      "status": "passed",
+      "exit_code": 0,
+      "exit_code_before_change": 0
+    },
+    {
+      "command": "yarn cli --help",
+      "status": "passed",
+      "exit_code": 0,
+      "exit_code_before_change": 0
+    },
+    {
+      "command": "yarn cli --version",
+      "status": "passed",
+      "exit_code": 0,
+      "exit_code_before_change": 0
+    },
+    {
+      "command": "node dist/cli/index.js --help",
+      "status": "passed",
+      "exit_code": 0,
+      "exit_code_before_change": 0
+    },
+    {
+      "command": "node dist/cli/index.js --version",
+      "status": "passed",
+      "exit_code": 0,
+      "exit_code_before_change": 0
+    },
+    {
+      "command": "bash cli.sh --help",
+      "status": "passed",
+      "exit_code": 0,
+      "exit_code_before_change": 0
+    },
+    {
+      "command": "bash cli.sh --version",
+      "status": "passed",
+      "exit_code": 0,
+      "exit_code_before_change": 0
+    },
+    {
+      "command": "yarn test --runInBand",
+      "status": "failed-existing",
+      "exit_code": 127,
+      "exit_code_before_change": 127
+    },
+    {
+      "command": "yarn lint",
+      "status": "failed-existing",
+      "exit_code": 1,
+      "exit_code_before_change": 1
+    },
+    {
+      "command": "node_modules/.bin/eslint 'src/**/*.ts' --format json",
+      "status": "failed-existing",
+      "exit_code": 1,
+      "exit_code_before_change": 1
+    },
+    {
+      "command": "npm pack --dry-run --ignore-scripts --json",
+      "status": "passed",
+      "exit_code": 0,
+      "exit_code_before_change": 0
+    },
+    {
+      "command": "tsc --noEmit (examples and scripts, temporary tsconfig)",
+      "status": "passed",
+      "exit_code": 0,
+      "exit_code_before_change": 0
+    },
+    {
+      "command": "node local-smoke.cjs (unchanged harness)",
+      "status": "passed",
+      "exit_code": 0,
+      "exit_code_before_change": 0
+    }
+  ],
+  "lint_comparison": {
+    "key": "path, rule, message, source line text",
+    "before": {
+      "errors": 88,
+      "warnings": 1
+    },
+    "after": {
+      "errors": 88,
+      "warnings": 1
+    },
+    "added": [],
+    "removed": [],
+    "diagnostics_with_moved_lines": 14
+  },
+  "package_preview": {
+    "purpose": "file list only; does not verify npm publication or external installation",
+    "entry_count": 184,
+    "non_dist_files": [
+      "LICENSE",
+      "README.md",
+      "cli.sh",
+      "package.json"
+    ],
+    "runtime_or_env_files": 0
+  },
+  "original_harness": {
+    "sha256": "0e56f5940cf09482da51d4829f2dd19f4b2c06e9e3586952a9409e042ccda1c1",
+    "content_changed": false,
+    "status": "passed",
+    "passed_checks": 20,
+    "results": [
+      {
+        "mode": "cdp",
+        "check": "local-provider-launch",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "agent-record-and-cache",
+        "status": "passed",
+        "recordedSteps": 3,
+        "mockLlmCalls": 3
+      },
+      {
+        "mode": "cdp",
+        "check": "json-cache-replay-without-llm",
+        "status": "passed",
+        "replayedSteps": 3
+      },
+      {
+        "mode": "cdp",
+        "check": "generated-script-syntax",
+        "status": "passed",
+        "executionChecked": false
+      },
+      {
+        "mode": "cdp",
+        "check": "missing-xpath-fails-without-llm",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "missing-xpath-falls-back-to-perform",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "single-perform-action",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "structured-extract",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "same-origin-iframe-cached-fill",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "provider-cleanup",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "local-provider-launch",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "agent-record-and-cache",
+        "status": "passed",
+        "recordedSteps": 3,
+        "mockLlmCalls": 3
+      },
+      {
+        "mode": "playwright",
+        "check": "json-cache-replay-without-llm",
+        "status": "passed",
+        "replayedSteps": 3
+      },
+      {
+        "mode": "playwright",
+        "check": "generated-script-syntax",
+        "status": "passed",
+        "executionChecked": false
+      },
+      {
+        "mode": "playwright",
+        "check": "missing-xpath-fails-without-llm",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "missing-xpath-falls-back-to-perform",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "single-perform-action",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "structured-extract",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "same-origin-iframe-cached-fill",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "provider-cleanup",
+        "status": "passed"
+      }
+    ]
+  },
+  "agent_run_cache_alias_smoke": {
+    "entry": "AgentRunCache",
+    "status": "passed",
+    "passed_checks": 24,
+    "includes": [
+      "pre-rename cache replay without LLM calls",
+      "generated script package name, export, and syntax"
+    ],
+    "results": [
+      {
+        "mode": "cdp",
+        "check": "local-provider-launch",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "agent-record-and-cache",
+        "status": "passed",
+        "recordedSteps": 3,
+        "mockLlmCalls": 3
+      },
+      {
+        "mode": "cdp",
+        "check": "json-cache-replay-without-llm",
+        "status": "passed",
+        "replayedSteps": 3
+      },
+      {
+        "mode": "cdp",
+        "check": "pre-rename-cache-replay-without-llm",
+        "status": "passed",
+        "replayedSteps": 3
+      },
+      {
+        "mode": "cdp",
+        "check": "generated-script-syntax",
+        "status": "passed",
+        "executionChecked": false
+      },
+      {
+        "mode": "cdp",
+        "check": "generated-script-brand-and-export",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "missing-xpath-fails-without-llm",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "missing-xpath-falls-back-to-perform",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "single-perform-action",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "structured-extract",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "same-origin-iframe-cached-fill",
+        "status": "passed"
+      },
+      {
+        "mode": "cdp",
+        "check": "provider-cleanup",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "local-provider-launch",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "agent-record-and-cache",
+        "status": "passed",
+        "recordedSteps": 3,
+        "mockLlmCalls": 3
+      },
+      {
+        "mode": "playwright",
+        "check": "json-cache-replay-without-llm",
+        "status": "passed",
+        "replayedSteps": 3
+      },
+      {
+        "mode": "playwright",
+        "check": "pre-rename-cache-replay-without-llm",
+        "status": "passed",
+        "replayedSteps": 3
+      },
+      {
+        "mode": "playwright",
+        "check": "generated-script-syntax",
+        "status": "passed",
+        "executionChecked": false
+      },
+      {
+        "mode": "playwright",
+        "check": "generated-script-brand-and-export",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "missing-xpath-fails-without-llm",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "missing-xpath-falls-back-to-perform",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "single-perform-action",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "structured-extract",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "same-origin-iframe-cached-fill",
+        "status": "passed"
+      },
+      {
+        "mode": "playwright",
+        "check": "provider-cleanup",
+        "status": "passed"
+      }
+    ]
+  },
+  "generated_script": {
+    "import": "import { AgentRunCache } from \"agent-run-cache\";",
+    "type_checked_with_repository_config": true,
+    "execution_tested": false,
+    "existing_defect_fixed": "tsc-alias rewrote the generated package specifier to a relative path in dist; the unmodified HEAD build had the same defect"
+  },
+  "package_entries": {
+    "self_reference": "passed for CommonJS and ESM",
+    "identity": "AgentRunCache === HyperAgent === default",
+    "subpaths": [
+      "types",
+      "custom-actions",
+      "actions",
+      "utils",
+      "llm/providers"
+    ],
+    "yarn_example_resolution": "passed"
+  },
+  "env_matrix": {
+    "status": "passed",
+    "failures": 0,
+    "subprocesses": 40,
+    "results": [
+      {
+        "scenario": "unset/unset",
+        "target": "profile",
+        "expected": false,
+        "observed": false,
+        "status": "passed"
+      },
+      {
+        "scenario": "unset/unset",
+        "target": "trace",
+        "expected": false,
+        "observed": false,
+        "status": "passed"
+      },
+      {
+        "scenario": "unset/unset",
+        "target": "openai",
+        "expected": false,
+        "observed": false,
+        "status": "passed"
+      },
+      {
+        "scenario": "unset/unset",
+        "target": "anthropic",
+        "expected": false,
+        "observed": false,
+        "status": "passed"
+      },
+      {
+        "scenario": "1/unset",
+        "target": "profile",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "1/unset",
+        "target": "trace",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "1/unset",
+        "target": "openai",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "1/unset",
+        "target": "anthropic",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "unset/1",
+        "target": "profile",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "unset/1",
+        "target": "trace",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "unset/1",
+        "target": "openai",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "unset/1",
+        "target": "anthropic",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "0/1",
+        "target": "profile",
+        "expected": false,
+        "observed": false,
+        "status": "passed"
+      },
+      {
+        "scenario": "0/1",
+        "target": "trace",
+        "expected": false,
+        "observed": false,
+        "status": "passed"
+      },
+      {
+        "scenario": "0/1",
+        "target": "openai",
+        "expected": false,
+        "observed": false,
+        "status": "passed"
+      },
+      {
+        "scenario": "0/1",
+        "target": "anthropic",
+        "expected": false,
+        "observed": false,
+        "status": "passed"
+      },
+      {
+        "scenario": "1/0",
+        "target": "profile",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "1/0",
+        "target": "trace",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "1/0",
+        "target": "openai",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "1/0",
+        "target": "anthropic",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "empty/1",
+        "target": "profile",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "empty/1",
+        "target": "trace",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "empty/1",
+        "target": "openai",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "empty/1",
+        "target": "anthropic",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "true/unset",
+        "target": "profile",
+        "expected": false,
+        "observed": false,
+        "status": "passed"
+      },
+      {
+        "scenario": "true/unset",
+        "target": "trace",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "true/unset",
+        "target": "openai",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "true/unset",
+        "target": "anthropic",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "unset/true",
+        "target": "profile",
+        "expected": false,
+        "observed": false,
+        "status": "passed"
+      },
+      {
+        "scenario": "unset/true",
+        "target": "trace",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "unset/true",
+        "target": "openai",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      },
+      {
+        "scenario": "unset/true",
+        "target": "anthropic",
+        "expected": true,
+        "observed": true,
+        "status": "passed"
+      }
+    ],
+    "timing": [
+      {
+        "target": "trace",
+        "read": "module-load",
+        "enabledAfterLoadStaysOff": true,
+        "disabledAfterLoadStaysOn": true,
+        "status": "passed"
+      },
+      {
+        "target": "openai",
+        "read": "module-load",
+        "enabledAfterLoadStaysOff": true,
+        "disabledAfterLoadStaysOn": true,
+        "status": "passed"
+      },
+      {
+        "target": "anthropic",
+        "read": "module-load",
+        "enabledAfterLoadStaysOff": true,
+        "disabledAfterLoadStaysOn": true,
+        "status": "passed"
+      },
+      {
+        "target": "profile",
+        "read": "call-time",
+        "offThenOn": {
+          "first": false,
+          "second": true
+        },
+        "onThenOff": {
+          "first": true,
+          "second": false
+        },
+        "status": "passed"
+      }
+    ]
+  },
+  "brand_residual": {
+    "scope": "tracked and untracked source files, excluding public-release audit evidence",
+    "filesScanned": 150,
+    "counts": {
+      "third-party-service": 72,
+      "legacy-env-fallback": 5,
+      "internal-symbol": 258,
+      "injected-function": 13,
+      "mcp-client-id": 2,
+      "third-party-sdk": 7,
+      "upstream-attribution": 3,
+      "legacy-bin": 1
+    },
+    "filesPerCategory": {
+      "third-party-service": 16,
+      "legacy-env-fallback": 4,
+      "internal-symbol": 36,
+      "injected-function": 5,
+      "mcp-client-id": 2,
+      "third-party-sdk": 5,
+      "upstream-attribution": 2,
+      "legacy-bin": 1
+    },
+    "unclassified": []
+  },
+  "old_package_path_in_configuration_source_examples_scripts_readme_guides_dist": 0,
+  "sensitive_recheck": {
+    "method": "file and line only; matched values were not printed",
+    "files_scanned": 153,
+    "credential_endpoint_or_local_path_hits": 0,
+    "email_lines_example_domain": 16,
+    "email_lines_other": [
+      "evals/WebVoyager_data.jsonl:428",
+      "evals/WebVoyager_data.jsonl:527",
+      "evals/WebVoyager_reference.json:780",
+      "evals/WebVoyager_reference.json:2190"
+    ],
+    "unresolved": [
+      "evals/WebVoyager_data.jsonl:428",
+      "evals/WebVoyager_data.jsonl:527",
+      "evals/WebVoyager_reference.json:2190"
+    ],
+    "runtime_artifacts_tracked": 0
+  },
+  "license": {
+    "upstream_notice_byte_identical": true,
+    "full_text_source": "https://www.gnu.org/licenses/agpl-3.0.txt",
+    "full_text_byte_identical_to_source": true,
+    "full_text_sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "modification_notice_date": "2026-11-08",
+    "package_license_field": "AGPL-3.0"
+  },
+  "not_verified": [
+    "real model services",
+    "Hyperbrowser cloud sessions",
+    "real MCP servers",
+    "cross-origin iframes",
+    "execution of generated replay scripts",
+    "npm publication or external installation"
+  ],
+  "excluded_from_review": [
+    "git-history",
+    "other-branches",
+    "tags",
+    "remote-actions-logs",
+    "artifacts",
+    "historical-releases",
+    "wiki",
+    "attachments"
+  ]
+}

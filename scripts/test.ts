@@ -1,10 +1,10 @@
-import { HyperAgent } from "../src/agent";
+import { AgentRunCache } from "agent-run-cache";
 import dotenv from "dotenv";
 import chalk from "chalk";
 
 dotenv.config();
 
-const agent = new HyperAgent({
+const agent = new AgentRunCache({
   debug: true,
 });
 
